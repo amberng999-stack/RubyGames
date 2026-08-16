@@ -479,12 +479,29 @@ $(document).on(
     ".acceptMission",
     function () {
 
-        console.log("Accept Mission button clicked");
-
         let missionId =
             parseInt(
                 $(this).data("id")
             );
+
+        if (!sessionStorage.getItem("username")) {
+
+            sessionStorage.setItem(
+                "rubyPendingAction",
+                JSON.stringify({
+                    type: "acceptMission",
+                    returnUrl: window.location.pathname + window.location.search,
+                    missionId: missionId
+                })
+            );
+
+            alert("Please sign in to accept this mission.");
+            window.location.href = "signin.html";
+            return;
+
+        }
+
+        console.log("Accept Mission button clicked");
 
         console.log("Mission ID:", missionId);
 
@@ -727,6 +744,47 @@ $(document).on(
 
     }
 );
+
+
+/* Resume a mission selected before sign-in. */
+if (sessionStorage.getItem("username")) {
+
+    try {
+
+        let pendingAction =
+            JSON.parse(
+                sessionStorage.getItem("rubyPendingAction") || "null"
+            );
+
+        let currentUrl =
+            window.location.pathname + window.location.search;
+
+        if (
+            pendingAction?.type === "acceptMission" &&
+            pendingAction.returnUrl === currentUrl
+        ) {
+
+            sessionStorage.removeItem("rubyPendingAction");
+
+            let pendingButton =
+                $(`.acceptMission[data-id="${Number(pendingAction.missionId)}"]`);
+
+            if (pendingButton.length) {
+
+                pendingButton.trigger("click");
+
+            }
+
+        }
+
+    }
+    catch (error) {
+
+        sessionStorage.removeItem("rubyPendingAction");
+
+    }
+
+}
 
 
 
