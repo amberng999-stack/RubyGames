@@ -786,11 +786,11 @@
     font-family:
         Poppins,
         Arial,
-        sans-serif;
+        sans-serif !important;
 
     font-size: .95rem;
 
-    font-weight: 600;
+    font-weight: 500;
 
     letter-spacing: 0;
 
