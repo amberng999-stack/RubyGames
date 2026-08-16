@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Esports Tournaments Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="Assets/Css/merged.css">
+  <link rel="stylesheet" href="css/page-loader.css">
+</head>
+<body id="main">
+
+  <main>
+
+        <!-- ================= LOADING SCREEN ================= -->
+    <div class="loader" id="loader" aria-live="polite">
+      <div class="loader__inner">
+        <div class="loader__top">
+          <div class="loader__logo">
+            <IMG src="Assets/IMG/ruby games logo white.png" alt="Ruby Games Logo" class="loader-logo" />
+          </div>
+          <div class="loader__label"><i>LOADING....</i></div>
+        </div>
+
+        <div class="loader__line">
+          <div class="loader__progress" id="progress"></div>
+        </div>
+
+        <div class="loader__meta">
+          <span>CONNECTING TO TOURNAMENT SITE</span>
+          <span><b id="percent">0</b>%</span>
+        </div>
+      </div>
+
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker__track">
+          LOADING &nbsp;&nbsp;&nbsp;
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ================= NAVIGATION BAR ================= -->
+<header class="site-navbar">
+  <nav class="navbar">
+    <div class="container">
+      <!-- Logo / Brand -->
+      <a class="navbar-brand" href="index.html">
+        <img src="Assets/IMG/ruby games logo white.png" alt="Ruby Games Logo" class="site-logo">
+        RUBY <span class="text-ruby">GAMES</span>
+      </a>
+
+      <!-- Mobile Hamburger Toggle -->
+      <button class="menu-btn btn btn-outline-ruby" id="navbarToggle" aria-label="Toggle navigation">
+        ☰
+      </button>
+
+      <!-- Nav Links -->
+      <div class="nav-links" id="navbarMenu">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="News_2.html">News</a>
+        <a class="nav-link" href="tournaments.html">Tournaments</a>
+        <a class="btn btn-ruby" href="signin.html">Sign In</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+    <section class="hero">
+      <video class="hero-background-video" autoplay muted loop playsinline preload="metadata">
+        <source src="Assets/IMG/9071410-hd_1920_1080_25fps.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="hero-background-overlay"></div>
+      <div class="container hero-layout" style="position: relative; z-index: 1;">
+        <div class="hero-intro">
+          <h1><span class="ruby-text">Esports Tournaments Hub</span></h1>
+          <p>Select a game to explore its tournament bracket, group stage and schedule.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding: 2rem 0;">
+      <div class="container">
+        <h2 class="section-title" style="text-align: center; margin-bottom: 1.5rem;">Featured Tournaments</h2>
+        <div class="grid">
+          <a href="Tournament_Details/LoL_Tournaments.html" class="card">
+            <img src="Assets/IMG/League_of_Legends_2019_vector.svg" alt="League of Legends">
+            <h3>League of Legends</h3>
+            <p>Watch the latest bracket, group standings and match schedule.</p>
+          </a>
+          <a href="Tournament_Details/HonourOfKings_Tournaments.html" class="card">
+            <img src="Assets/IMG/Honor_of_Kings_logo.png" alt="Honour of Kings">
+            <h3>Honour of Kings</h3>
+            <p>Explore the Honour of Kings championship, groups and upcoming matches.</p>
+          </a>
+          <a href="Tournament_Details/MobileLegends_Tournaments.html" class="card">
+            <img src="Assets/IMG/Mobile_Legends_Bang_Bang_2025_logo.png" alt="Mobile Legends">
+            <h3>Mobile Legends</h3>
+            <p>Check out the Mobile Legends tournament bracket and schedule.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+      <footer class="footer" style="margin-top: 2rem;">
+    <div class="container" style="text-align: center;">
+      <img src="Assets/IMG/ruby games logo white.png" alt="Ruby Games Logo" class="footer-logo" style="max-width: 120px;">
+      <p>This site is owned and operated by Ruby Games. © 2026 Ruby Games. All rights reserved.</p>
+    </div>
+  </footer>
+
+  </main>
+
+
+  <script src="Assets/JS/loading.js"></script>
+  <script src="Assets/JS/Tournaments.js"></script>
+  <script src="Assets/JS/Tree.js"></script>
+  <script src="Assets/JS/App.js"></script>
+  <script src="Assets/JS/Navbar.js"></script>
+</body>
+</html>

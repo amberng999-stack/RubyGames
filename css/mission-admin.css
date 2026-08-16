@@ -1,0 +1,1782 @@
+/* Shared base styles are provided by style.css. */
+
+
+/* =========================================
+   RUBY GAMES MISSION
+   MISSION PAGE ONLY
+   ========================================= */
+
+
+/* =========================================
+   MISSION NAVBAR
+========================================= */
+
+.mission-navbar {
+
+    position: relative;
+
+    z-index: 1000;
+
+    background: rgba(0, 0, 0, .97);
+
+    border-bottom: 1px solid #3c0a0f;
+
+}
+
+
+.mission-navbar-inner {
+
+    min-height: 72px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+}
+
+
+.mission-brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color: #9B111E;
+
+    font-family: Impact, "Arial Black", sans-serif;
+
+    font-size: 1.45rem;
+
+    letter-spacing: .04em;
+
+    flex-shrink: 0;
+
+    text-decoration: none;
+
+}
+
+
+.mission-brand:hover {
+
+    color: #bd1828;
+
+}
+
+
+.mission-brand img {
+
+    width: 48px;
+
+    height: 48px;
+
+    object-fit: contain;
+
+    border-radius: 7px;
+
+}
+
+
+.mission-nav-links {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 28px;
+
+}
+
+
+.mission-nav-links a {
+
+    position: relative;
+
+    color: #dcdcdc;
+
+    font-size: .9rem;
+
+    font-weight: 500;
+
+    padding: 25px 0;
+
+    text-decoration: none;
+
+    transition: color .2s ease;
+
+}
+
+
+.mission-nav-links a:hover {
+
+    color: #9B111E;
+
+}
+
+
+.mission-nav-links a.active {
+
+    color: #9B111E;
+
+}
+
+
+.mission-nav-links a.active::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    right: 0;
+
+    bottom: 14px;
+
+    height: 2px;
+
+    background: #9B111E;
+
+}
+
+
+
+/* =========================================
+   MISSION HERO
+========================================= */
+
+.mission-hero {
+
+    padding: 100px 0 75px;
+
+    text-align: center;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(155, 17, 30, .42),
+            transparent 38%
+        ),
+
+        linear-gradient(
+            135deg,
+            #000000,
+            #190307
+        );
+
+    border-bottom: 1px solid #28070b;
+
+}
+
+
+.mission-hero-small {
+
+    color: #9B111E;
+
+    font-size: .85rem;
+
+    font-weight: 700;
+
+    letter-spacing: .18em;
+
+    margin-bottom: 15px;
+
+}
+
+
+.mission-hero h1 {
+
+    font-size: clamp(3rem, 8vw, 6rem);
+
+    line-height: .95;
+
+    margin-bottom: 25px;
+
+}
+
+
+.mission-hero h1 span {
+
+    display: inline-block;
+
+    color: #9B111E;
+
+}
+
+
+.mission-hero p {
+
+    max-width: 650px;
+
+    margin: 0 auto;
+
+    color: #B3B3B3;
+
+    font-size: 1rem;
+
+    line-height: 1.8;
+
+}
+
+
+
+/* =========================================
+   MISSION MAIN
+========================================= */
+
+.mission-main {
+
+    padding: 55px 0 80px;
+
+    background: #000000;
+
+}
+
+
+
+/* =========================================
+   MEMBER POINTS
+========================================= */
+
+.mission-points-panel {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    padding: 28px 35px;
+
+    margin-bottom: 65px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #171717,
+            #0d0d0d
+        );
+
+    border: 1px solid #3c0a0f;
+
+    border-left: 5px solid #9B111E;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 15px 45px rgba(0,0,0,.45);
+
+}
+
+
+.mission-points-info small {
+
+    display: block;
+
+    color: #B3B3B3;
+
+    font-size: .75rem;
+
+    font-weight: 600;
+
+    letter-spacing: .12em;
+
+    margin-bottom: 7px;
+
+}
+
+
+.mission-points-value {
+
+    color: #ffffff;
+
+    font-family:
+        Impact,
+        "Arial Black",
+        sans-serif;
+
+    font-size: 2.4rem;
+
+    letter-spacing: .04em;
+
+}
+
+
+.mission-points-value span {
+
+    color: #9B111E;
+
+}
+
+
+.mission-points-label {
+
+    min-width: 180px;
+
+    padding-left: 30px;
+
+    border-left: 1px solid #333;
+
+}
+
+
+.mission-points-label span {
+
+    display: block;
+
+    color: #B3B3B3;
+
+    font-size: .7rem;
+
+    letter-spacing: .12em;
+
+    margin-bottom: 5px;
+
+}
+
+
+.mission-points-label strong {
+
+    color: #9B111E;
+
+    font-family:
+        Impact,
+        "Arial Black",
+        sans-serif;
+
+    font-size: 1.35rem;
+
+    letter-spacing: .08em;
+
+}
+
+
+
+/* =========================================
+   MISSION SECTION
+========================================= */
+
+.mission-section {
+
+    margin-bottom: 75px;
+
+}
+
+
+.mission-section-heading {
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 30px;
+
+}
+
+
+.mission-section-heading small {
+
+    color: #9B111E;
+
+    font-size: .75rem;
+
+    font-weight: 700;
+
+    letter-spacing: .15em;
+
+}
+
+
+.mission-section-heading h2 {
+
+    margin-top: 5px;
+
+    margin-bottom: 0;
+
+    font-size: clamp(2rem, 5vw, 3.2rem);
+
+}
+
+
+.mission-section-heading > span {
+
+    color: #B3B3B3;
+
+    font-size: .8rem;
+
+    white-space: nowrap;
+
+}
+
+
+
+/* =========================================
+   MISSION CARD
+========================================= */
+
+.mission-card {
+
+    height: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    padding: 25px;
+
+    background: #171717;
+
+    border: 1px solid #3c0a0f;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    transition:
+        transform .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+
+}
+
+
+.mission-card:hover {
+
+    transform: translateY(-7px);
+
+    border-color: #9B111E;
+
+    box-shadow:
+        0 15px 40px rgba(155,17,30,.18);
+
+}
+
+
+.mission-header {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 18px;
+
+}
+
+
+.mission-header h3 {
+
+    margin: 0;
+
+    font-size: 1.5rem;
+
+    line-height: 1.2;
+
+}
+
+
+.mission-card > p {
+
+    color: #B3B3B3;
+
+    font-size: .83rem;
+
+    line-height: 1.7;
+
+    margin-bottom: 10px;
+
+}
+
+
+.mission-card > p:first-of-type {
+
+    margin-bottom: 18px;
+
+}
+
+
+
+/* =========================================
+   COUNTDOWN
+========================================= */
+
+.countdown-box {
+
+    flex-shrink: 0;
+
+    padding: 6px 9px;
+
+    background: rgba(155,17,30,.1);
+
+    border: 1px solid rgba(155,17,30,.45);
+
+    border-radius: 5px;
+
+    color: #e56b77;
+
+    font-size: .68rem;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+}
+
+
+.countdown {
+
+    color: #ffffff;
+
+    font-size: .68rem;
+
+}
+
+
+
+/* =========================================
+   MISSION INFORMATION
+========================================= */
+
+.mission-card > p:nth-of-type(2),
+.mission-card > p:nth-of-type(3) {
+
+    color: #888;
+
+    font-size: .72rem;
+
+}
+
+
+.mission-reward {
+
+    margin-top: auto;
+
+    padding-top: 20px;
+
+    margin-bottom: 18px;
+
+    color: #9B111E;
+
+    font-size: 1rem;
+
+    font-weight: 700;
+
+}
+
+
+.mission-btn {
+
+    width: 100%;
+
+    padding: 10px 18px;
+
+    border: 1px solid #9B111E;
+
+    border-radius: 7px;
+
+    background: #9B111E;
+
+    color: #ffffff;
+
+    font-size: .72rem;
+
+    font-weight: 700;
+
+    letter-spacing: .05em;
+
+    transition: .2s ease;
+
+}
+
+
+.mission-btn:hover {
+
+    background: #bd1828;
+
+    border-color: #bd1828;
+
+    color: #ffffff;
+
+    box-shadow:
+        0 0 18px rgba(155,17,30,.35);
+
+}
+
+
+
+/* =========================================
+   MY MISSIONS
+========================================= */
+
+.my-missions-section {
+
+    margin-top: 75px;
+
+    padding-top: 55px;
+
+    border-top: 1px solid #2d2d2d;
+
+}
+
+
+
+/* =========================================
+   MISSION TABS
+========================================= */
+
+.mission-tabs {
+
+    display: inline-flex;
+
+    padding: 5px;
+
+    gap: 5px;
+
+    margin-bottom: 25px;
+
+    background: #111111;
+
+    border: 1px solid #3c0a0f;
+
+    border-radius: 10px;
+
+}
+
+
+.mission-tab {
+
+    border: none;
+
+    background: transparent;
+
+    color: #aaa;
+
+    padding: 10px 22px;
+
+    border-radius: 7px;
+
+    font-family: Poppins, sans-serif;
+
+    font-size: .75rem;
+
+    font-weight: 700;
+
+    letter-spacing: .05em;
+
+    cursor: pointer;
+
+    transition: .25s ease;
+
+}
+
+
+.mission-tab:hover {
+
+    color: #ffffff;
+
+}
+
+
+.mission-tab.active {
+
+    background: #9B111E;
+
+    color: #ffffff;
+
+    box-shadow:
+        0 0 18px rgba(155,17,30,.35);
+
+}
+
+
+
+/* =========================================
+   MY MISSION LIST
+========================================= */
+
+.my-mission-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+}
+
+
+.my-mission-row {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 20px 22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #171717,
+            #0f0f0f
+        );
+
+    border: 1px solid #2d2d2d;
+
+    border-left: 3px solid #9B111E;
+
+    border-radius: 9px;
+
+    transition:
+        border-color .2s ease,
+        transform .2s ease,
+        background .2s ease;
+
+}
+
+
+.my-mission-row:hover {
+
+    transform: translateX(4px);
+
+    border-color: #9B111E;
+
+    background: #191919;
+
+}
+
+
+.my-mission-info {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+}
+
+
+.my-mission-title {
+
+    margin: 0;
+
+    color: #ffffff;
+
+    font-family:
+        Poppins,
+        Arial,
+        sans-serif;
+
+    font-size: .95rem;
+
+    font-weight: 600;
+
+    letter-spacing: 0;
+
+}
+
+
+
+/* =========================================
+   MY MISSION COUNTDOWN
+========================================= */
+
+.my-mission-countdown {
+
+    color: #777777;
+
+    font-size: .72rem;
+
+}
+
+
+.my-mission-countdown .countdown {
+
+    color: #9B111E;
+
+    font-weight: 700;
+
+}
+
+
+
+/* =========================================
+   ACTION BUTTONS
+========================================= */
+
+.my-mission-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    flex-shrink: 0;
+
+}
+
+
+.my-mission-actions button {
+
+    min-width: 78px;
+
+    padding: 8px 14px;
+
+    border-radius: 6px;
+
+    font-size: .7rem;
+
+    font-weight: 700;
+
+}
+
+
+.my-mission-actions .btn-success {
+
+    background: #9B111E;
+
+    border-color: #9B111E;
+
+}
+
+
+.my-mission-actions .btn-success:hover {
+
+    background: #bd1828;
+
+    border-color: #bd1828;
+
+}
+
+
+.my-mission-actions .btn-danger {
+
+    background: transparent;
+
+    border: 1px solid #444;
+
+    color: #aaa;
+
+}
+
+
+.my-mission-actions .btn-danger:hover {
+
+    background: #9B111E;
+
+    border-color: #9B111E;
+
+    color: #ffffff;
+
+}
+
+
+
+/* =========================================
+   MISSION STATUS
+========================================= */
+
+.my-mission-status {
+
+    padding: 7px 12px;
+
+    border: 1px solid #333;
+
+    border-radius: 6px;
+
+    color: #B3B3B3;
+
+    font-size: .7rem;
+
+    font-weight: 700;
+
+    letter-spacing: .04em;
+
+    white-space: nowrap;
+
+}
+
+
+.my-mission-status.history-approved {
+
+    color: #00ff88;
+
+    border-color: rgba(0,255,136,.25);
+
+    background: rgba(0,255,136,.05);
+
+}
+
+
+.my-mission-status.history-rejected {
+
+    color: #ff6b78;
+
+    border-color: rgba(255,107,120,.25);
+
+    background: rgba(255,107,120,.05);
+
+}
+
+
+.my-mission-status.history-cancelled {
+
+    color: #aaa;
+
+    border-color: #333;
+
+}
+
+
+.my-mission-status.history-expired {
+
+    color: #e5a45b;
+
+    border-color: rgba(229,164,91,.25);
+
+    background: rgba(229,164,91,.05);
+
+}
+
+
+.history-reward {
+
+    display: block;
+
+    margin-top: 4px;
+
+    color: #9B111E;
+
+    font-size: .68rem;
+
+}
+
+
+
+/* =========================================
+   EMPTY STATE
+========================================= */
+
+.my-mission-list > .text-center {
+
+    padding: 35px 20px !important;
+
+    background: #111111;
+
+    border: 1px dashed #3c0a0f;
+
+    border-radius: 9px;
+
+}
+
+
+.my-mission-list > .text-center p {
+
+    color: #777777;
+
+    font-size: .85rem;
+
+}
+
+
+
+/* =========================================
+   MISSION FOOTER
+========================================= */
+
+.mission-footer {
+
+    padding: 35px 20px;
+
+    text-align: center;
+
+    background: #050505;
+
+    border-top: 1px solid #3c0a0f;
+
+    color: #B3B3B3;
+
+}
+
+
+.mission-footer h4 {
+
+    color: #9B111E;
+
+    margin-bottom: 12px;
+
+}
+
+
+.mission-footer p {
+
+    margin-bottom: 0;
+
+    font-size: .8rem;
+
+}
+
+
+
+/* =========================================
+   MISSION MOBILE
+========================================= */
+
+@media (max-width: 991px) {
+
+    .mission-navbar-inner {
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        padding: 12px 0;
+
+    }
+
+
+    .mission-brand {
+
+        width: 100%;
+
+        justify-content: center;
+
+    }
+
+
+    .mission-nav-links {
+
+        width: 100%;
+
+        gap: 20px;
+
+        flex-wrap: wrap;
+
+    }
+
+
+    .mission-nav-links a {
+
+        padding: 8px 0;
+
+    }
+
+
+    .mission-nav-links a.active::after {
+
+        bottom: 2px;
+
+    }
+
+}
+
+
+@media (max-width: 576px) {
+
+    .mission-navbar-inner {
+
+        gap: 8px;
+
+    }
+
+
+    .mission-nav-links {
+
+        gap: 13px;
+
+        justify-content: center;
+
+    }
+
+
+    .mission-nav-links a {
+
+        font-size: .75rem;
+
+    }
+
+
+    .mission-hero {
+
+        padding: 70px 0 55px;
+
+    }
+
+
+    .mission-hero h1 {
+
+        font-size: 3.2rem;
+
+    }
+
+
+    .mission-hero p {
+
+        font-size: .85rem;
+
+        padding: 0 15px;
+
+    }
+
+
+    .mission-points-panel {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        padding: 25px;
+
+    }
+
+
+    .mission-points-label {
+
+        width: 100%;
+
+        padding-left: 0;
+
+        padding-top: 18px;
+
+        border-left: none;
+
+        border-top: 1px solid #333;
+
+    }
+
+
+    .mission-section-heading {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+    }
+
+
+    .mission-section-heading > span {
+
+        white-space: normal;
+
+    }
+
+
+    .mission-header {
+
+        flex-direction: column;
+
+    }
+
+
+    .countdown-box {
+
+        align-self: flex-start;
+
+    }
+
+
+    .mission-tabs {
+
+        display: flex;
+
+        width: 100%;
+
+    }
+
+
+    .mission-tab {
+
+        flex: 1;
+
+        padding: 10px 8px;
+
+        font-size: .65rem;
+
+    }
+
+
+    .my-mission-row {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        padding: 17px;
+
+    }
+
+
+    .my-mission-actions {
+
+        width: 100%;
+
+    }
+
+
+    .my-mission-actions button {
+
+        flex: 1;
+
+    }
+
+
+    .my-mission-status {
+
+        width: 100%;
+
+        text-align: center;
+
+    }
+
+}
+
+
+/* =================================
+   MY MISSIONS BOX
+================================= */
+
+.my-missions-box {
+    width: 100%;
+    background: #121212;
+    border: 1px solid #3c0a0f;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+
+/* =================================
+   MISSION TABS
+================================= */
+
+.mission-tabs {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+    background: #9B111E;
+    gap: 0;
+}
+
+
+.mission-tab {
+    flex: 1;
+    padding: 14px 20px;
+
+    border: none;
+    border-right: 1px solid #700c15;
+
+    border-radius: 0;
+
+    background: #9B111E;
+    color: #FFFFFF;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.mission-tab:last-child {
+    border-right: none;
+}
+
+
+.mission-tab:hover {
+    background: #700c15;
+}
+
+
+/* =================================
+   ACTIVE TAB
+================================= */
+
+.mission-tab.active {
+    background: #000000;
+    color: #FFFFFF;
+}
+
+
+/* =================================
+   MISSION CONTENT
+================================= */
+
+#myMissionList {
+    background: #121212;
+    padding: 24px;
+    min-height: 220px;
+}
+
+
+/* =================================
+   MISSION ROW
+================================= */
+
+.my-mission-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 18px 20px;
+
+    background: #080808;
+
+    border: 1px solid #3c0a0f;
+    border-radius: 10px;
+
+    color: #FFFFFF;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.my-mission-row:hover {
+    background: #0d0d0d;
+    border-color: #9B111E;
+}
+
+
+.my-mission-row + .my-mission-row {
+    margin-top: 12px;
+}
+
+
+/* =================================
+   MISSION INFO
+================================= */
+
+.my-mission-info {
+    flex: 1;
+}
+
+
+.my-mission-title {
+    margin: 0;
+
+    color: #FFFFFF;
+
+    font-size: 1.1rem;
+}
+
+
+.my-mission-countdown {
+    margin-top: 6px;
+
+    color: #B3B3B3;
+
+    font-size: 0.85rem;
+}
+
+
+.my-mission-countdown .countdown {
+    color: #ef8590;
+    font-weight: 600;
+}
+
+
+/* =================================
+   ACTION BUTTONS
+================================= */
+
+.my-mission-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.my-mission-actions .btn {
+    min-width: 85px;
+}
+
+
+/* =================================
+   STATUS
+================================= */
+
+.my-mission-status {
+    color: #B3B3B3;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+
+.history-approved {
+    color: #FFFFFF;
+}
+
+
+.history-rejected {
+    color: #ef8590;
+}
+
+
+.history-cancelled {
+    color: #B3B3B3;
+}
+
+
+.history-expired {
+    color: #9B111E;
+}
+
+
+.history-reward {
+    margin-left: 10px;
+    color: #ef8590;
+    font-weight: 600;
+}
+
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 576px) {
+
+    .mission-tab {
+        padding: 12px 8px;
+        font-size: 12px;
+    }
+
+
+    #myMissionList {
+        padding: 15px;
+    }
+
+
+    .my-mission-row {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+
+    .my-mission-actions {
+        width: 100%;
+    }
+
+
+    .my-mission-actions .btn {
+        flex: 1;
+    }
+
+}
+
+/* =========================================
+   ADMIN MISSION REVIEW
+========================================= */
+
+.admin-page {
+    min-height: 100vh;
+    background: var(--black);
+    color: var(--white);
+    padding: 4rem 0;
+}
+
+
+/* =================================
+   ADMIN HEADING
+================================= */
+
+.admin-heading {
+    margin-bottom: 2.5rem;
+    border-left: 4px solid var(--ruby-red);
+    padding-left: 1.25rem;
+}
+
+.admin-heading h1 {
+    margin: 0;
+    color: var(--white);
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+}
+
+.admin-heading p {
+    margin: .5rem 0 0;
+    color: var(--light-gray);
+    font-size: .95rem;
+}
+
+
+/* =================================
+   ADMIN MISSION LIST
+================================= */
+
+.admin-mission-list {
+    width: 100%;
+}
+
+
+/* =================================
+   ADMIN MISSION CARD
+================================= */
+
+.admin-mission-card {
+    height: 100%;
+    background: var(--dark-gray);
+    border: 1px solid #3c0a0f;
+    color: var(--white);
+    padding: 1.5rem;
+    transition:
+        transform .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+}
+
+.admin-mission-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--ruby-red);
+    box-shadow: 0 12px 35px rgba(155, 17, 30, .2);
+}
+
+
+/* =================================
+   MISSION TITLE
+================================= */
+
+.admin-mission-card h3 {
+    margin-bottom: 1.25rem;
+    color: var(--white);
+    font-size: 1.4rem;
+}
+
+
+/* =================================
+   MISSION INFORMATION
+================================= */
+
+.admin-mission-card p {
+    margin-bottom: .65rem;
+    color: var(--light-gray);
+    font-size: .9rem;
+}
+
+.admin-mission-card p strong {
+    color: var(--white);
+}
+
+
+/* =================================
+   REWARD
+================================= */
+
+.admin-mission-card .admin-reward {
+    color: var(--ruby-red);
+    font-weight: 600;
+}
+
+
+/* =================================
+   STATUS
+================================= */
+
+.admin-mission-card .admin-status {
+    color: #ff8994;
+    font-weight: 600;
+}
+
+
+/* =================================
+   PROOF
+================================= */
+
+.admin-mission-card .admin-proof {
+    color: var(--light-gray);
+}
+
+.admin-mission-card .admin-proof strong {
+    color: var(--white);
+}
+
+
+/* =================================
+   ACTION BUTTONS
+================================= */
+
+.admin-mission-actions {
+    display: flex;
+    gap: .75rem;
+    margin-top: 1.25rem;
+}
+
+.admin-approve-btn,
+.admin-reject-btn {
+    flex: 1;
+    padding: .6rem 1rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    transition: .2s ease;
+}
+
+
+/* =================================
+   APPROVE
+================================= */
+
+.admin-approve-btn {
+    background: var(--ruby-red);
+    border: 1px solid var(--ruby-red);
+    color: var(--white);
+}
+
+.admin-approve-btn:hover {
+    background: #bd1828;
+    border-color: #bd1828;
+    color: var(--white);
+}
+
+
+/* =================================
+   REJECT
+================================= */
+
+.admin-reject-btn {
+    background: transparent;
+    border: 1px solid var(--ruby-red);
+    color: var(--white);
+}
+
+.admin-reject-btn:hover {
+    background: var(--ruby-red);
+    border-color: var(--ruby-red);
+    color: var(--white);
+}
+
+
+/* =================================
+   EMPTY STATE
+================================= */
+
+.admin-empty {
+    padding: 3rem 1.5rem;
+    text-align: center;
+    background: var(--dark-gray);
+    border: 1px solid #3c0a0f;
+}
+
+.admin-empty p {
+    margin: 0;
+    color: var(--light-gray);
+}
+
+
+/* =================================
+   RESPONSIVE
+================================= */
+
+@media (max-width: 576px) {
+
+    .admin-page {
+        padding: 3rem 0;
+    }
+
+    .admin-mission-card {
+        padding: 1.25rem;
+    }
+
+    .admin-mission-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .admin-mission-actions {
+        flex-direction: column;
+    }
+
+}
+
+
+/* =================================
+   MISSION SECTION HEADER
+================================= */
+
+.mission-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+
+/* =================================
+   ADMIN CHECKLIST
+================================= */
+
+.admin-checklist {
+    width: 42px;
+    height: 42px;
+
+    display: grid;
+    place-items: center;
+
+    background: var(--dark-gray);
+    border: 1px solid #3c0a0f;
+    border-radius: 8px;
+
+    font-size: 1.35rem;
+    text-decoration: none;
+
+    transition:
+        border-color .2s ease,
+        background .2s ease,
+        transform .2s ease;
+}
+
+.admin-checklist:hover {
+    background: #190307;
+    border-color: var(--ruby-red);
+    transform: translateY(-2px);
+}
+
+/* =================================
+   ADMIN BACK BUTTON
+================================= */
+
+.admin-topbar {
+    margin-bottom: 2rem;
+}
+
+.admin-back-btn {
+    display: inline-block;
+
+    color: var(--light-gray);
+
+    text-decoration: none;
+
+    font-size: .9rem;
+
+    transition: color .2s ease;
+}
+
+.admin-back-btn:hover {
+    color: var(--ruby-red);
+}

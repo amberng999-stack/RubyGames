@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Game | Ruby Games</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+  integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"
+  onerror="document.getElementById('cdnWarning').style.display='block'">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/page-loader.css">
+<style>
+:root{--font-primary:Impact,'Arial Narrow Bold',sans-serif;--font-secondary:'Segoe UI',Roboto,Arial,sans-serif;--black:#000;--ruby:#9B111E;--grey:#1a1a1a;--white:#fff;}
+html,body{overflow-x:hidden;width:100%;max-width:100vw;}
+body{background:var(--black)!important;color:var(--white);font-family:var(--font-secondary);padding-top:70px;padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right);}
+h1,h2,h3,.brand,.btn-ruby,.game-title,.navbar-brand{font-family:var(--font-primary);letter-spacing:1px;}
+img{max-width:100%;height:auto;display:block;}
+p,li,a,div,span{word-wrap:break-word;overflow-wrap:break-word;}
+.hero h1{font-size:clamp(1.6rem,5vw,3.2rem);}
+.navbar-brand{font-size:clamp(1.1rem,4vw,1.7rem)!important;}
+.navbar-ruby{background:var(--black)!important;border-bottom:3px solid var(--ruby);}
+.navbar-ruby .navbar-brand{color:var(--ruby)!important;}
+.navbar-ruby .navbar-brand span{color:#fff;}
+.navbar-ruby .nav-link{color:#fff!important;font-weight:500;min-height:44px;display:flex;align-items:center;}
+.navbar-ruby .nav-link:hover{color:var(--ruby)!important;}
+.navbar-ruby .nav-link.active{background:var(--ruby);border-radius:4px;color:#fff!important;}
+.navbar-toggler{border-color:var(--ruby)!important;min-width:44px;min-height:44px;}
+.navbar-toggler-icon{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb(155,17,30)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")!important;}
+
+/* ===== Hero with video background + carousel + text layers ===== */
+.hero{position:relative;text-align:center;padding:100px 20px 60px;overflow:hidden;min-height:480px;display:flex;align-items:center;justify-content:center;}
+
+/* Layer 0: looping background video */
+.hero-video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:0;pointer-events:none;display:block;}
+
+/* Layer 1: dark tint over the video so the carousel/text stay readable */
+.hero-video-overlay{position:absolute;inset:0;background:rgba(0,0,0,.55);z-index:1;}
+
+/* Layer 2: Bootstrap Carousel (images only, no video inside it) sits above the video */
+.hero-carousel{position:absolute;inset:0;z-index:2;}
+.hero-carousel,
+.hero-carousel .carousel,
+.hero-carousel .carousel-inner,
+.hero-carousel .carousel-item{height:100%;}
+.hero-carousel .carousel-item img{width:100%;height:100%;object-fit:cover;filter:brightness(.55) grayscale(15%);}
+.hero-carousel .carousel-item{transition:transform 1.2s ease-in-out, opacity 1.2s ease-in-out;}
+
+/* Layer 3: text content on top of everything */
+.hero-content{position:relative;z-index:3;text-align:center;padding:0 15px;}
+.hero span{color:var(--ruby);}
+
+.btn-ruby{background:var(--ruby);color:#fff;border:none;padding:10px 26px;font-family:var(--font-primary);text-transform:uppercase;border-radius:6px;min-height:44px;transition:.3s;}
+.btn-ruby:hover{background:#000;color:var(--ruby);box-shadow:0 0 18px var(--ruby);}
+.hero-tournament-btn{font-family:var(--font-secondary);font-weight:500;letter-spacing:.04em;text-decoration:none;text-shadow:none;}
+.section-title{text-align:center;text-transform:uppercase;margin:50px 0 10px;font-size:clamp(1.3rem,4vw,2rem);}
+.section-title::after{content:'';display:block;width:80px;height:4px;background:var(--ruby);margin:12px auto 0;}
+.game-card{position:relative;display:block;border:3px solid var(--ruby);border-radius:10px;overflow:hidden;background:var(--grey);text-decoration:none;height:100%;transition:transform .3s;}
+.game-card img{width:100%;height:200px;object-fit:cover;filter:grayscale(30%) brightness(.85);transition:.4s;}
+.game-card:hover img{filter:grayscale(0%) brightness(1);transform:scale(1.08);}
+.game-card:hover{transform:translateY(-6px);animation:flamePulse 1s ease-in-out infinite alternate;}
+@keyframes flamePulse{from{box-shadow:0 0 14px 4px rgba(155,17,30,.6);}to{box-shadow:0 0 30px 10px rgba(255,77,51,.7);}}
+.game-card .tag{position:absolute;top:10px;right:10px;background:var(--ruby);color:#fff;font-size:.7rem;padding:3px 12px;border-radius:20px;z-index:2;}
+.game-title{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.85);text-align:center;padding:10px;text-transform:uppercase;border-top:2px solid var(--ruby);z-index:2;}
+.badge-recent{display:inline-block;background:var(--grey);border:1px solid var(--ruby);color:#fff;padding:6px 14px;margin:4px;border-radius:20px;text-decoration:none;font-size:.85rem;}
+.badge-recent:hover{background:var(--ruby);}
+footer{background:#000;border-top:3px solid var(--ruby);text-align:center;padding:25px;color:#999;}
+#cdnWarning{display:none;background:#ffc107;color:#000;text-align:center;padding:12px;font-weight:700;}
+@media(max-width:359px){.hero{padding:90px 12px 30px;}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
+</style>
+</head>
+<body>
+<div class="loader" id="loader" aria-live="polite">
+  <div class="loader__inner">
+    <div class="loader__top"><div class="loader__logo"><img src="Assets/IMG/ruby games logo white.png" alt="Ruby Games Logo" class="loader-logo"></div><div class="loader__label"><i>LOADING....</i></div></div>
+    <div class="loader__line"><div class="loader__progress" id="progress"></div></div>
+    <div class="loader__meta"><span>CONNECTING TO GAMES</span><span><b id="percent">0</b>%</span></div>
+  </div>
+  <div class="ticker" aria-hidden="true"><div class="ticker__track">LOADING &nbsp;&nbsp;&nbsp; LOADING &nbsp;&nbsp;&nbsp;</div></div>
+</div>
+
+<div id="cdnWarning"> Some styles failed to load. Please check your internet connection.</div>
+
+<nav class="navbar navbar-expand-lg navbar-ruby site-navbar fixed-top">
+  <div class="container-fluid px-3 px-md-4">
+    <a class="navbar-brand" href="index.html"> RUBY <span>GAMES</span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="News_2.html">News</a></li>
+        <li class="nav-item"><a class="nav-link" href="tournaments.html">Tournaments</a></li>
+        <li class="nav-item"><a class="nav-link active" href="game.html">Games</a></li>
+        <li class="nav-item"><a class="nav-link" href="booking.html">Booking</a></li>
+        <li class="nav-item"><a class="nav-link" href="teams.html">Teams</a></li>
+        <li class="nav-item"><a class="nav-link" href="mission.html">Missions</a></li>
+        <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
+        <li class="nav-item"><a class="nav-link" href="signin.html">Sign In</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+
+  <!-- Layer 0: background video only (autoplay, muted, looped, no controls) -->
+  <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="images/hero1.jpeg">
+    <source src="images/hero-loop.mp4" type="video/mp4">
+    
+  </video>
+  <div class="hero-video-overlay"></div>
+
+  <!-- Layer 2: Bootstrap Carousel with 3+ images (kept separate from the video) -->
+  <div id="heroCarousel" class="carousel slide carousel-fade hero-carousel" data-bs-ride="carousel" data-bs-interval="3500">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="images/valorant.jpg" alt="Valorant esports">
+      </div>
+      <div class="carousel-item">
+        <img src="images/hero1.jpeg" alt="Tournaments">
+      </div>
+      <div class="carousel-item">
+        <img src="images/lol.jpg" alt="League of Legends">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+  </div>
+
+  <!-- Layer 3: text content -->
+  <div class="hero-content">
+    <h1 id="welcomeMsg">WELCOME TO RUBY GAMES'S GAME ROOM</h1>
+    <p class="lead">This Official E-Sports Club only present game with 3C (Compete. Conquer.Connect.) </p>
+    <a href="tournaments.html" class="btn-ruby hero-tournament-btn">View Tournaments</a>
+  </div>
+
+</section>
+
+<h2 class="section-title">Featured Games</h2>
+<p class="text-center text-secondary">🔥 Click a game to view full details</p>
+
+<div class="container py-4">
+  <div class="row g-3 g-md-4">
+    <div class="col-12 col-sm-6 col-lg-4">
+      <a href="game-detail.html?game=valorant" class="game-card"><span class="tag">FPS</span><img src="images/valorant.jpg" alt="Valorant"><div class="game-title">Valorant</div></a>
+    </div>
+    <div class="col-12 col-sm-6 col-lg-4">
+      <a href="game-detail.html?game=lol" class="game-card"><span class="tag">MOBA</span><img src="images/lol.jpg" alt="League of Legends"><div class="game-title">League of Legends</div></a>
+    </div>
+    <div class="col-12 col-sm-6 col-lg-4">
+      <a href="game-detail.html?game=mlbb" class="game-card"><span class="tag">Mobile MOBA</span><img src="images/mlbb.jpg" alt="Mobile Legends"><div class="game-title">Mobile Legends</div></a>
+    </div>
+    <div class="col-12 col-sm-6 col-lg-4">
+      <a href="game-detail.html?game=cs2" class="game-card"><span class="tag">FPS</span><img src="images/cs2.jpg" alt="Counter-Strike 2"><div class="game-title">Counter-Strike 2</div></a>
+    </div>
+    <div class="col-12 col-sm-6 col-lg-4">
+      <a href="game-detail.html?game=dota2" class="game-card"><span class="tag">MOBA</span><img src="images/dota2.jpg" alt="Dota 2"><div class="game-title">Dota 2</div></a>
+    </div>
+    <div class="col-12 col-sm-6 col-lg-4">
+      <a href="game-detail.html?game=pubgm" class="game-card"><span class="tag">Battle Royale</span><img src="images/pubgm.jpg" alt="PUBG Mobile"><div class="game-title">PUBG Mobile</div></a>
+    </div>
+  </div>
+</div>
+
+<div class="container pb-5">
+  <h4 style="color:var(--ruby);">🕹️ Recently Viewed Games</h4>
+  <div id="recentGamesList">No games viewed yet.</div>
+</div>
+
+<footer><p>&copy; 2026 Ruby Games Esports Club | UCCD2323 Front-End Web Development</p></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"
+  onerror="document.getElementById('cdnWarning').style.display='block';"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/main.js"></script>
+<script>
+window.addEventListener('DOMContentLoaded', function () {
+  const toggler = document.querySelector('.navbar-toggler');
+  const navMenu = document.getElementById('navMenu');
+  if (typeof bootstrap === 'undefined' && toggler && navMenu) {
+    toggler.addEventListener('click', () => navMenu.classList.toggle('show'));
+  }
+  const currentPage = window.location.pathname.split('/').pop() || 'game.html';
+  document.querySelectorAll('.nav-link').forEach(link => {
+    if (link.getAttribute('data-page') === currentPage) link.classList.add('active');
+  });
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => { if (navMenu.classList.contains('show')) navMenu.classList.remove('show'); });
+  });
+});
+
+let visits=sessionStorage.getItem('sessionVisits');
+visits=visits?parseInt(visits)+1:1;
+sessionStorage.setItem('sessionVisits',visits);
+
+if(!getCookie('rubyVisitor')){
+  setCookie('rubyVisitor','true',30);
+  document.getElementById('welcomeMsg').textContent='WELCOME TO RUBY GAMES 🔥';
+}else{
+  document.getElementById('welcomeMsg').textContent='WELCOME BACK, CHAMPION! 🏆';
+}
+
+function renderRecentGames(){
+  const recent=JSON.parse(localStorage.getItem('recentGames'))||[];
+  const box=document.getElementById('recentGamesList');
+  if(recent.length===0){box.innerHTML='<p class="text-secondary">No games viewed yet. Click a game above!</p>';return;}
+  box.innerHTML=recent.map(g=>`<a href="game-detail.html?game=${g.id}" class="badge-recent">${g.name}</a>`).join('');
+}
+renderRecentGames();
+</script>
+<script src="Assets/JS/loading.js"></script>
+<script src="js/site-header.js"></script>
+</body>
+</html>
