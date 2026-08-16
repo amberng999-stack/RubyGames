@@ -1631,6 +1631,3 @@ a {
   z-index: 15; /* Sits above page content (z-index: 1) but under the loader screen (z-index: 20) */
   backdrop-filter: blur(8px); /* Adds a subtle glassmorphism blur effect over scrolling content */
 }
-/* Shared previous-page control for inner website headers. */
-.header-back-button { width: 38px; height: 42px; display: inline-grid; place-items: center; flex: 0 0 auto; margin-left: -1.25rem; margin-right: .75rem; padding: 0; border: 0; border-radius: 0; background: transparent; color: #fff; font: 900 2rem/1 "Arial Black",Arial,sans-serif; text-shadow: 1px 0 currentColor,-1px 0 currentColor; cursor: pointer; transition: .2s; }
-.header-back-button:hover, .header-back-button:focus-visible { background: transparent; color: #9b111e; transform: translateX(-4px); outline: none; }

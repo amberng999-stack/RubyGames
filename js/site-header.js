@@ -30,8 +30,6 @@
     body.ruby-fixed-header-page{padding-top:68px!important}
     .ruby-unified-header{position:fixed;top:0;left:0;z-index:1100;width:100%;min-height:68px;background:rgba(0,0,0,.96);border-bottom:1px solid #3c0a0f;font-family:Poppins,Arial,sans-serif}
     .ruby-header-inner{position:relative;width:min(1320px,calc(100% - 32px));min-height:68px;margin:auto;display:flex;align-items:center;gap:12px}
-    .ruby-header-back{position:absolute;right:calc(100% + 8px);padding:0;border:0;background:transparent;color:#fff;font-size:calc(2.15rem + 2px);font-weight:900;line-height:1;cursor:pointer}
-    .ruby-header-back:hover,.ruby-header-back:focus{color:#bd1828}
     .ruby-header-brand{display:flex;align-items:center;gap:9px;flex:0 0 auto;color:#9b111e!important;font-size:calc(1.55rem + 2px);font-weight:700;text-decoration:none!important;white-space:nowrap}
     .ruby-header-brand img{width:52px;height:52px;display:block;object-fit:contain;border-radius:8px}
     .ruby-header-toggle{display:none;margin-left:auto;width:46px;height:46px;border:1px solid #9b111e;border-radius:5px;background:transparent;color:#fff;font-size:calc(1.5rem + 2px)}
@@ -43,7 +41,6 @@
     .ruby-header-cart-count{position:absolute;top:-8px;right:-8px;display:grid;place-items:center;min-width:20px;height:20px;padding:0 5px;border-radius:999px;background:#9b111e;color:#fff;font-size:.72rem;font-weight:700}
     .ruby-header-auth{display:flex;align-items:center;margin-left:8px;white-space:nowrap}
     .ruby-header-auth>a,.ruby-header-auth .btn{display:inline-flex;align-items:center;justify-content:center;padding:.5rem .75rem;border:1px solid #9b111e;border-radius:5px;background:#9b111e;color:#fff!important;font-size:calc(.9rem + 2px);font-weight:600;text-decoration:none!important}
-    @media(max-width:1399px){.ruby-header-back{position:static;flex:0 0 auto}}
     @media(max-width:1199px){
       .ruby-header-inner{flex-wrap:wrap;padding:10px 0}
       .ruby-header-toggle{display:block}
@@ -55,25 +52,6 @@
     @media(max-width:575px){.ruby-header-inner{width:calc(100% - 20px)}.ruby-header-brand{font-size:calc(1.05rem + 2px)}.ruby-header-brand img{width:44px;height:44px}.ruby-header-menu{order:5}.ruby-header-cart{order:4}.ruby-header-auth{width:100%;order:6}.ruby-header-auth>a,.ruby-header-auth .btn{width:100%}}
   `;
   document.head.appendChild(style);
-
-  function navigateBack() {
-    let pageHistory;
-    try { pageHistory = JSON.parse(sessionStorage.getItem('rubyPageHistory') || '[]'); }
-    catch (error) { pageHistory = []; }
-    const currentPage = window.location.pathname + window.location.search;
-    if (pageHistory[pageHistory.length - 1] === currentPage) pageHistory.pop();
-    const previousPage = pageHistory.pop();
-    if (previousPage) {
-      pageHistory.push(previousPage);
-      sessionStorage.setItem('rubyPageHistory', JSON.stringify(pageHistory));
-      sessionStorage.setItem('rubyBackNavigation', 'true');
-      sessionStorage.setItem('rubySkipNextLoader', 'true');
-      window.location.href = previousPage;
-    } else {
-      sessionStorage.setItem('rubySkipNextLoader', 'true');
-      window.location.href = `${rootPrefix}index.html`;
-    }
-  }
 
   function buildHeader() {
     const oldHeader = document.querySelector('header.site-navbar, nav.site-navbar, nav.mission-navbar, nav.shop-navbar, nav.navbar-ruby');
@@ -98,7 +76,6 @@
     header.className = 'ruby-unified-header';
     header.setAttribute('aria-label', 'Main navigation');
     header.innerHTML = `<div class="ruby-header-inner">
-      ${isHome ? '' : '<button class="ruby-header-back" type="button" aria-label="Go back to previous page" title="Back">&#8592;</button>'}
       <a class="ruby-header-brand" href="${rootPrefix}index.html"><img src="${rootPrefix}images/ruby games logo white.png" alt="Ruby Games Logo"><span>RUBY GAMES</span></a>
       <button class="ruby-header-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
       <div class="ruby-header-menu">${links}</div>
@@ -108,8 +85,6 @@
     oldHeader.replaceWith(header);
     document.body.classList.add('ruby-fixed-header-page');
 
-    const backButton = header.querySelector('.ruby-header-back');
-    if (backButton) backButton.addEventListener('click', navigateBack);
     const cartButton = header.querySelector('.ruby-header-cart');
     if (cartButton) cartButton.addEventListener('click', () => {
       if (typeof window.openCart === 'function') window.openCart();

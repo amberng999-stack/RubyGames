@@ -24,8 +24,6 @@ a { color: inherit; }
 .btn-outline-ruby { border: 1px solid var(--ruby-red); color: var(--white); }
 .btn-outline-ruby:hover { background: var(--ruby-red); color: var(--white); }
 .welcome-text { color: var(--light-gray); font-size: .88rem; }
-.header-back-button { width: 38px; height: 42px; display: inline-grid; place-items: center; flex: 0 0 auto; margin-left: -1.25rem; margin-right: .75rem; padding: 0; border: 0; border-radius: 0; background: transparent; color: #fff; font: 900 2rem/1 "Arial Black",Arial,sans-serif; text-shadow: 1px 0 currentColor,-1px 0 currentColor; transition: .2s; }
-.header-back-button:hover, .header-back-button:focus-visible { background: transparent; color: var(--ruby-red); transform: translateX(-4px); outline: none; }
 
 .page-banner { padding: 9rem 0 5rem; background: radial-gradient(circle at 80% 25%, rgba(155,17,30,.45), transparent 35%), linear-gradient(135deg,#000,#190307); }
 .page-banner h1 { font-size: clamp(3.2rem,8vw,6rem); }

@@ -19,26 +19,7 @@ $(function () {
     sessionStorage.setItem(pageHistoryKey, JSON.stringify(pageHistory.slice(-30)));
   }
 
-  function returnToPreviousPage() {
-    let history;
-    try { history = JSON.parse(sessionStorage.getItem(pageHistoryKey) || '[]'); }
-    catch (error) { history = []; }
-    if (history[history.length - 1] === currentPage) history.pop();
-    const previousPage = history.pop();
-    if (previousPage) {
-      history.push(previousPage);
-      sessionStorage.setItem(pageHistoryKey, JSON.stringify(history));
-      sessionStorage.setItem(backNavigationKey, 'true');
-      sessionStorage.setItem('rubySkipNextLoader', 'true');
-      window.location.href = previousPage;
-      return;
-    }
-    sessionStorage.setItem('rubySkipNextLoader', 'true');
-    window.location.href = document.querySelector('a[href$="index.html"]').href;
-  }
-
   const navigation = $('.navbar-nav').first();
-  const isHomePage = /(?:^|\/)index\.html$/i.test(window.location.pathname) || /\/$/.test(window.location.pathname);
   const primaryPages = [
     ['index.html', 'HOME'],
     ['News_2.html', 'NEWS'],
@@ -69,14 +50,6 @@ $(function () {
     customNavigation.append('<a href="signin.html">SIGN IN</a>');
   }
 
-  if (!isHomePage) {
-    const brand = $('.site-navbar .navbar-brand').first();
-    if (brand.length && !$('.header-back-button').length) {
-      $('<button type="button" class="header-back-button" aria-label="Go back to previous page" title="Back">&#8592;</button>')
-        .insertBefore(brand);
-    }
-  }
-  $('.header-back-button').off('click.rubyBack').on('click.rubyBack', returnToPreviousPage);
   $('.fade-section').each(function () {
     const section = this;
     const reveal = () => {

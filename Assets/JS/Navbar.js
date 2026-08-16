@@ -19,39 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
     sessionStorage.setItem(pageHistoryKey, JSON.stringify(pageHistory.slice(-30)));
   }
 
-  function returnToPreviousPage() {
-    let history;
-    try { history = JSON.parse(sessionStorage.getItem(pageHistoryKey) || '[]'); }
-    catch (error) { history = []; }
-    if (history[history.length - 1] === currentPage) history.pop();
-    const previousPage = history.pop();
-    if (previousPage) {
-      history.push(previousPage);
-      sessionStorage.setItem(pageHistoryKey, JSON.stringify(history));
-      sessionStorage.setItem(backNavigationKey, 'true');
-      sessionStorage.setItem('rubySkipNextLoader', 'true');
-      window.location.href = previousPage;
-      return;
-    }
-    sessionStorage.setItem('rubySkipNextLoader', 'true');
-    window.location.href = document.querySelector('a[href$="index.html"]').href;
-  }
-
   const toggleBtn = document.getElementById('navbarToggle');
   const menu = document.getElementById('navbarMenu');
-  const brand = document.querySelector('.site-navbar .navbar-brand');
-
-  if (brand && !document.querySelector('.header-back-button')) {
-    const backButton = document.createElement('button');
-    backButton.type = 'button';
-    backButton.className = 'header-back-button';
-    backButton.setAttribute('aria-label', 'Go back to previous page');
-    backButton.title = 'Back';
-    backButton.innerHTML = '&#8592;';
-    backButton.addEventListener('click', returnToPreviousPage);
-    brand.parentNode.insertBefore(backButton, brand);
-  }
-
   if (menu) {
     const insideFolder = /\/(News_Article|Tournament_Details)\//.test(window.location.pathname);
     const prefix = insideFolder ? '../' : '';
