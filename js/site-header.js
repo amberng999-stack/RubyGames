@@ -35,6 +35,7 @@
   const style = document.createElement('style');
   style.textContent = `
     html,body,button,input,select,textarea,h1,h2,h3,h4,h5,h6{font-family:Poppins,Arial,sans-serif!important}
+    ${isHome ? 'body h1,body h2,body h3,body h4,body h5,body h6,.ruby-header-brand{font-family:Impact,"Arial Black",sans-serif!important}' : ''}
     body{overflow-x:hidden;background:#000;color:#fff}
     img,video,iframe{max-width:100%}
     body.ruby-fixed-header-page{padding-top:68px!important}
