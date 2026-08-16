@@ -99,7 +99,7 @@
     header.setAttribute('aria-label', 'Main navigation');
     header.innerHTML = `<div class="ruby-header-inner">
       ${isHome ? '' : '<button class="ruby-header-back" type="button" aria-label="Go back to previous page" title="Back">&#8592;</button>'}
-      <a class="ruby-header-brand" href="${rootPrefix}index.html"><img src="${rootPrefix}images/Logo.jpeg" alt="Ruby Games Logo"><span>RUBY GAMES</span></a>
+      <a class="ruby-header-brand" href="${rootPrefix}index.html"><img src="${rootPrefix}images/ruby games logo white.png" alt="Ruby Games Logo"><span>RUBY GAMES</span></a>
       <button class="ruby-header-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
       <div class="ruby-header-menu">${links}</div>
       ${isShopPage ? `<button class="ruby-header-cart" type="button" aria-label="Open shopping cart">&#128722;<span id="cartCount" class="ruby-header-cart-count">${cartQuantity}</span></button>` : ''}

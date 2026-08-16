@@ -321,7 +321,7 @@ function renderRewards() {
 
                     <img
                         src="${product.image}"
-                        onerror="this.onerror=null;this.src='images/Logo.jpeg';"
+                        onerror="this.onerror=null;this.src='images/ruby games logo white.png';"
                         alt="${product.name}"
                         style="
                             width:100%;
@@ -540,7 +540,7 @@ function renderStore() {
 
                     <img
                         src="${product.image}"
-                        onerror="this.onerror=null;this.src='images/Logo.jpeg';"
+                        onerror="this.onerror=null;this.src='images/ruby games logo white.png';"
                         alt="${product.name}"
                         style="
                             width:100%;
@@ -1520,7 +1520,7 @@ function renderCart() {
 
             <img
                 src="${product.image}"
-                onerror="this.onerror=null;this.src='images/Logo.jpeg';"
+                onerror="this.onerror=null;this.src='images/ruby games logo white.png';"
                 alt="${product.name}"
             >
 
