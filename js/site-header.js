@@ -25,8 +25,18 @@
         : pageFile;
   const isHome = activeFile.toLowerCase() === 'index.html';
 
+  if (!document.querySelector('link[href*="fonts.googleapis.com/css2?family=Poppins"]')) {
+    const fontLink = document.createElement('link');
+    fontLink.rel = 'stylesheet';
+    fontLink.href = 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap';
+    document.head.appendChild(fontLink);
+  }
+
   const style = document.createElement('style');
   style.textContent = `
+    html,body,button,input,select,textarea,h1,h2,h3,h4,h5,h6{font-family:Poppins,Arial,sans-serif!important}
+    body{overflow-x:hidden;background:#000;color:#fff}
+    img,video,iframe{max-width:100%}
     body.ruby-fixed-header-page{padding-top:68px!important}
     .ruby-unified-header{position:fixed;top:0;left:0;z-index:1100;width:100%;min-height:68px;background:rgba(0,0,0,.96);border-bottom:1px solid #3c0a0f;font-family:Poppins,Arial,sans-serif}
     .ruby-header-inner{position:relative;width:min(1320px,calc(100% - 32px));min-height:68px;margin:auto;display:flex;align-items:center;gap:12px}
@@ -41,6 +51,8 @@
     .ruby-header-cart-count{position:absolute;top:-8px;right:-8px;display:grid;place-items:center;min-width:20px;height:20px;padding:0 5px;border-radius:999px;background:#9b111e;color:#fff;font-size:.72rem;font-weight:700}
     .ruby-header-auth{display:flex;align-items:center;margin-left:8px;white-space:nowrap}
     .ruby-header-auth>a,.ruby-header-auth .btn{display:inline-flex;align-items:center;justify-content:center;padding:.5rem .75rem;border:1px solid #9b111e;border-radius:5px;background:#9b111e;color:#fff!important;font-size:calc(.9rem + 2px);font-weight:600;text-decoration:none!important}
+    .cookie-notice{position:fixed;z-index:1200;left:50%;bottom:1rem;transform:translateX(-50%);width:min(680px,calc(100% - 2rem));display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 1.25rem;background:#191919;color:#fff;border:1px solid #9b111e;box-shadow:0 12px 45px #000;font-family:Poppins,Arial,sans-serif!important}
+    .cookie-notice p{margin:0;font-size:.9rem}.cookie-notice-actions{display:flex;gap:.5rem;flex:0 0 auto}
     @media(max-width:1199px){
       .ruby-header-inner{flex-wrap:wrap;padding:10px 0}
       .ruby-header-toggle{display:block}
@@ -49,9 +61,15 @@
       .ruby-header-menu>a{padding:.7rem 0}
       .ruby-header-auth{margin:0;padding-top:5px}
     }
-    @media(max-width:575px){.ruby-header-inner{width:calc(100% - 20px)}.ruby-header-brand{font-size:calc(1.05rem + 2px)}.ruby-header-brand img{width:44px;height:44px}.ruby-header-menu{order:5}.ruby-header-cart{order:4}.ruby-header-auth{width:100%;order:6}.ruby-header-auth>a,.ruby-header-auth .btn{width:100%}}
+    @media(max-width:575px){.ruby-header-inner{width:calc(100% - 20px)}.ruby-header-brand{font-size:calc(1.05rem + 2px);color:#9b111e!important}.ruby-header-brand img{width:44px;height:44px}.ruby-header-menu{order:5}.ruby-header-cart{order:4}.ruby-header-auth{width:100%;order:6}.ruby-header-auth>a,.ruby-header-auth .btn{width:100%}.cookie-notice{align-items:stretch;flex-direction:column}.cookie-notice-actions{width:100%}.cookie-notice-actions .btn{flex:1}}
   `;
   document.head.appendChild(style);
+
+  if (!document.querySelector('script[src$="js/storage.js"],script[src$="storage.js"]')) {
+    const storageScript = document.createElement('script');
+    storageScript.src = `${rootPrefix}js/storage.js`;
+    document.head.appendChild(storageScript);
+  }
 
   function buildHeader() {
     const oldHeader = document.querySelector('header.site-navbar, nav.site-navbar, nav.mission-navbar, nav.shop-navbar, nav.navbar-ruby');

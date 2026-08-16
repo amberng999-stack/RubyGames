@@ -64,8 +64,11 @@ function switchRubyAccountStorage(username, email) {
 }
 
 function setCookie(name, value, days) {
+  if (name !== 'cookieConsent' && getCookie('cookieConsent') !== 'accepted') return false;
   const expires = new Date(Date.now() + days * 86400000).toUTCString();
-  document.cookie = `${encodeURIComponent(name)}=${encodeURIComponent(value)}; expires=${expires}; path=/; SameSite=Lax`;
+  const secure = window.location.protocol === 'https:' ? '; Secure' : '';
+  document.cookie = `${encodeURIComponent(name)}=${encodeURIComponent(value)}; expires=${expires}; path=/; SameSite=Lax${secure}`;
+  return true;
 }
 
 function getCookie(name) {
@@ -74,21 +77,32 @@ function getCookie(name) {
   return item ? decodeURIComponent(item.substring(prefix.length)) : '';
 }
 
+function deleteCookie(name) {
+  const secure = window.location.protocol === 'https:' ? '; Secure' : '';
+  document.cookie = `${encodeURIComponent(name)}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; SameSite=Lax${secure}`;
+}
+
+function clearOptionalCookies() {
+  ['rememberedUsername', 'rubyUserName'].forEach(deleteCookie);
+}
+
 function showCookieNotice() {
   if (getCookie('cookieConsent')) return;
   const notice = document.createElement('aside');
   notice.id = 'cookieNotice';
   notice.className = 'cookie-notice';
   notice.setAttribute('aria-label', 'Cookie preferences');
-  notice.innerHTML = `<p>We use cookies to remember your website preferences.</p><div class="d-flex gap-2"><button class="btn btn-ruby btn-sm" id="acceptCookies">ACCEPT</button><button class="btn btn-outline-light btn-sm" id="declineCookies">DECLINE</button></div>`;
+  notice.innerHTML = `<p>Allow optional cookies to remember your username and booking name? Essential session and shopping storage will still be used.</p><div class="cookie-notice-actions"><button class="btn btn-ruby btn-sm" id="acceptCookies" type="button">ACCEPT</button><button class="btn btn-outline-light btn-sm" id="declineCookies" type="button">DECLINE</button></div>`;
   document.body.appendChild(notice);
-  $('#acceptCookies').on('click', () => chooseCookieConsent('accepted'));
-  $('#declineCookies').on('click', () => chooseCookieConsent('declined'));
+  document.getElementById('acceptCookies').addEventListener('click', () => chooseCookieConsent('accepted'));
+  document.getElementById('declineCookies').addEventListener('click', () => chooseCookieConsent('declined'));
 }
 
 function chooseCookieConsent(choice) {
   setCookie('cookieConsent', choice, 7);
-  $('#cookieNotice').fadeOut(250, function () { this.remove(); });
+  if (choice !== 'accepted') clearOptionalCookies();
+  const notice = document.getElementById('cookieNotice');
+  if (notice) notice.remove();
 }
 
 function getFavouriteTeam() { return localStorage.getItem('favouriteTeam') || ''; }
@@ -97,21 +111,30 @@ function removeFavouriteTeam() { localStorage.removeItem('favouriteTeam'); rende
 
 function renderFavouriteTeams() {
   const favourite = getFavouriteTeam();
-  $('.favourite-button').each(function () {
-    const selected = $(this).data('team') === favourite;
-    $(this).toggleClass('btn-ruby', selected).toggleClass('btn-outline-ruby', !selected);
-    $(this).text(selected ? '♥ Favourite' : '♡ Add to Favourite');
+  document.querySelectorAll('.favourite-button').forEach(function (button) {
+    const selected = button.dataset.team === favourite;
+    button.classList.toggle('btn-ruby', selected);
+    button.classList.toggle('btn-outline-ruby', !selected);
+    button.textContent = selected ? '♥ Favourite' : '♡ Add to Favourite';
   });
-  $('#favouriteStatus').text(favourite ? `Your favourite team: ${favourite}` : 'No favourite team selected.');
-  $('#removeFavourite').toggle(Boolean(favourite));
+  const status = document.getElementById('favouriteStatus');
+  if (status) status.textContent = favourite ? `Your favourite team: ${favourite}` : 'No favourite team selected.';
+  const removeButton = document.getElementById('removeFavourite');
+  if (removeButton) removeButton.hidden = !favourite;
 }
 
-$(function () {
+function initialiseStorageFeatures() {
   showCookieNotice();
   renderFavouriteTeams();
-  $(document).on('click', '.favourite-button', function () {
-    const team = $(this).data('team');
+  document.addEventListener('click', function (event) {
+    const button = event.target.closest('.favourite-button');
+    if (!button) return;
+    const team = button.dataset.team;
     getFavouriteTeam() === team ? removeFavouriteTeam() : setFavouriteTeam(team);
   });
-  $('#removeFavourite').on('click', removeFavouriteTeam);
-});
+  const removeButton = document.getElementById('removeFavourite');
+  if (removeButton) removeButton.addEventListener('click', removeFavouriteTeam);
+}
+
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initialiseStorageFeatures);
+else initialiseStorageFeatures();
