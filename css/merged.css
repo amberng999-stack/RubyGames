@@ -1557,6 +1557,8 @@ a {
   margin: 0 0 8px;
   color: var(--Ruby-Red);
   font-size: 1.2rem;
+  font-family: Poppins, Arial, sans-serif;
+  font-weight: 600;
 }
 
 .article-quote p {
