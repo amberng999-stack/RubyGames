@@ -20,7 +20,7 @@
     ['home.html', 'HOME'],
     ['News_2.html', 'NEWS'],
     ['tournaments.html', 'TOURNAMENTS'],
-    ['game.html', 'GAMES'],
+    ['game/game.html', 'GAMES'],
     ['booking.html', 'BOOKING'],
     ['teams.html', 'TEAMS'],
     ['mission.html', 'MISSIONS'],
@@ -33,8 +33,8 @@
     ? 'News_2.html'
     : pageFolder === 'Tournament_Details'
       ? 'tournaments.html'
-      : pageFile === 'game-detail.html'
-        ? 'game.html'
+      : pageFolder === 'game'
+        ? 'game/game.html'
         : pageFile;
   const isHome = activeFile.toLowerCase() === 'home.html';
 
