@@ -20,7 +20,7 @@ function logoutUser() {
   }
   sessionStorage.removeItem('username');
   sessionStorage.removeItem('email');
-  window.location.replace('home.html');
+  window.location.replace('index.html');
 }
 
 function readStoredArray(key) {
