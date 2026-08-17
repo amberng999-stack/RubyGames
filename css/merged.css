@@ -224,16 +224,18 @@ a {
   padding: 28px 22px;
   text-decoration: none;
   color: inherit;
-  transition: 
-    background-color 0.3s ease, 
-    border-color 0.3s ease, 
-    transform 0.3s ease, 
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease,
     box-shadow 0.3s ease;
 }
 
 .card:hover {
-  background: var(--white);             /* Background flips to off-white */
-  border-color: var(--Ruby-Red);        /* Sharp red border accent */
+  background: var(--white);
+  /* Background flips to off-white */
+  border-color: var(--Ruby-Red);
+  /* Sharp red border accent */
   transform: translateY(-5px);
   box-shadow: 0 14px 30px rgba(188, 27, 43, 0.45);
 }
@@ -565,8 +567,14 @@ a {
   flex: 1;
 }
 
-.section-results .bracket-round[data-round="qf"] { gap: 1rem; }
-.section-results .bracket-round[data-round="sf"] { gap: 4rem; }
+.section-results .bracket-round[data-round="qf"] {
+  gap: 1rem;
+}
+
+.section-results .bracket-round[data-round="sf"] {
+  gap: 4rem;
+}
+
 .section-results .bracket-round[data-round="gf"],
 .section-results .bracket-round[data-round="champion"] {
   justify-content: center;
@@ -601,7 +609,7 @@ a {
   color: var(--white);
 }
 
-.section-results .bracket-team + .bracket-team {
+.section-results .bracket-team+.bracket-team {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   margin-top: 0.4rem;
   padding-top: 0.4rem;
@@ -728,7 +736,7 @@ a {
   text-transform: uppercase;
 }
 
-.news-item:hover .news-link > div {
+.news-item:hover .news-link>div {
   transform: translateY(-4px);
 }
 
@@ -998,7 +1006,7 @@ footer {
   width: 100%;
 }
 
-.navbar > .container {
+.navbar>.container {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1155,13 +1163,16 @@ footer {
     text-align: center;
     gap: 15px;
   }
+
   .schedule-date {
     border-right: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     padding-right: 0;
     padding-bottom: 10px;
   }
-}:root {
+}
+
+:root {
   --ruby-red: #9B111E;
   --black: #000000;
   --white: #FFFFFF;
@@ -1429,7 +1440,7 @@ a {
 .hero.card {
   align-items: flex-start !important;
   text-align: left !important;
-  
+
   /* Margins for outer spacing */
   margin-top: 20px;
   margin-bottom: 40px;
@@ -1590,7 +1601,7 @@ a {
 
 /* ================= MOBILE NAVBAR FIX ================= */
 @media (max-width: 850px) {
-  .navbar > .container {
+  .navbar>.container {
     flex-wrap: wrap;
     justify-content: space-between;
   }
@@ -1630,6 +1641,8 @@ a {
   left: 0;
   right: 0;
   width: 100%;
-  z-index: 15; /* Sits above page content (z-index: 1) but under the loader screen (z-index: 20) */
-  backdrop-filter: blur(8px); /* Adds a subtle glassmorphism blur effect over scrolling content */
+  z-index: 15;
+  /* Sits above page content (z-index: 1) but under the loader screen (z-index: 20) */
+  backdrop-filter: blur(8px);
+  /* Adds a subtle glassmorphism blur effect over scrolling content */
 }

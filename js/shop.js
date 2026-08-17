@@ -29,7 +29,7 @@ const rewardProducts = [
         image: "images/wallpaper.png",
         redeemLimit: 1,
         dailyLimit: null,
-        weeklyLimit:null
+        weeklyLimit: null
     },
 
     {
@@ -40,7 +40,7 @@ const rewardProducts = [
         image: "images/sticker.png",
         redeemLimit: null,
         dailyLimit: null,
-        weeklyLimit:3
+        weeklyLimit: 3
     },
 
     {
@@ -51,10 +51,10 @@ const rewardProducts = [
         image: "images/mouse.png",
         redeemLimit: 1,
         dailyLimit: null,
-        weeklyLimit:null
+        weeklyLimit: null
     },
 
-     {
+    {
         name: "Ruby Games Mechanical Keyboard",
         category: "MERCHANDISE",
         description: "Official branded mechanical keyboard.",
@@ -62,7 +62,7 @@ const rewardProducts = [
         image: "images/keyboard.png",
         redeemLimit: 1,
         dailyLimit: null,
-        weeklyLimit:null
+        weeklyLimit: null
     },
 
     {
@@ -191,7 +191,7 @@ function renderRewards() {
 
     container.innerHTML = "";
 
-    rewardProducts.forEach(function(product) {
+    rewardProducts.forEach(function (product) {
 
         const card =
             document.createElement("div");
@@ -410,7 +410,7 @@ function getRedeemedCount(productName) {
 
     }
 
-    return rewardHistory.filter(function(item) {
+    return rewardHistory.filter(function (item) {
 
         return item.name === productName;
 
@@ -439,7 +439,7 @@ function getDailyRedeemedCount(productName) {
 
     const today = new Date();
 
-    return rewardHistory.filter(function(item) {
+    return rewardHistory.filter(function (item) {
 
         if (item.name !== productName) {
             return false;
@@ -493,7 +493,7 @@ function getWeeklyRedeemedCount(productName) {
     startOfWeek.setHours(0, 0, 0, 0);
 
 
-    return rewardHistory.filter(function(item) {
+    return rewardHistory.filter(function (item) {
 
         if (item.name !== productName) {
             return false;
@@ -523,7 +523,7 @@ function renderStore() {
     container.innerHTML = "";
 
 
-    storeProducts.forEach(function(product) {
+    storeProducts.forEach(function (product) {
 
 
         const card = document.createElement("div");
@@ -624,7 +624,7 @@ function redeemReward(productName) {
     }
 
     const product = rewardProducts.find(
-        function(item) {
+        function (item) {
             return item.name === productName;
         }
     );
@@ -706,7 +706,7 @@ function redeemReward(productName) {
     if (redeemedCount === 0 && rewardHistory.length > 0) {
 
         redeemedCount =
-            rewardHistory.filter(function(item) {
+            rewardHistory.filter(function (item) {
 
                 return item.name === product.name;
 
@@ -880,7 +880,7 @@ function showShopToast(message) {
 
     toast.classList.add("show");
 
-    setTimeout(function() {
+    setTimeout(function () {
 
         toast.classList.remove("show");
 
@@ -932,7 +932,7 @@ function renderRewardHistory() {
     rewardHistory
         .slice()
         .reverse()
-        .forEach(function(reward) {
+        .forEach(function (reward) {
 
             const item =
                 document.createElement("div");
@@ -1077,7 +1077,7 @@ function renderOrderHistory() {
     orderHistory
         .slice()
         .reverse()
-        .forEach(function(order, index) {
+        .forEach(function (order, index) {
 
             const item =
                 document.createElement("div");
@@ -1260,9 +1260,9 @@ function openOrderDetails(index) {
                 ORDER ITEMS
             </h3>
 
-            ${order.items.map(function(item) {
+            ${order.items.map(function (item) {
 
-                return `
+        return `
 
                     <div class="order-detail-item">
 
@@ -1287,7 +1287,7 @@ function openOrderDetails(index) {
 
                 `;
 
-            }).join("")}
+    }).join("")}
 
         </div>
 
@@ -1371,7 +1371,7 @@ function addToCart(productName) {
     }
 
     const product = storeProducts.find(
-        function(item) {
+        function (item) {
             return item.name === productName;
         }
     );
@@ -1379,8 +1379,8 @@ function addToCart(productName) {
     if (!product) return;
 
 
-     const existingItem = cart.find(
-        function(item) {
+    const existingItem = cart.find(
+        function (item) {
             return item.name === productName;
         }
     );
@@ -1425,7 +1425,7 @@ function updateCart() {
 
     const totalQuantity =
         cart.reduce(
-            function(total, item) {
+            function (total, item) {
 
                 return total + item.quantity;
 
@@ -1503,7 +1503,7 @@ function renderCart() {
     let total = 0;
 
 
-    cart.forEach(function(product, index) {
+    cart.forEach(function (product, index) {
 
         total += product.price * product.quantity;
 
@@ -1715,7 +1715,7 @@ function renderCheckout() {
        ORDER ITEMS
     ================================= */
 
-    cart.forEach(function(product) {
+    cart.forEach(function (product) {
 
         const subtotal =
             product.price * product.quantity;
@@ -1993,9 +1993,9 @@ function placeOrder() {
 
     }
 
-        /* =================================
-       GET CUSTOMER INFORMATION
-    ================================= */
+    /* =================================
+   GET CUSTOMER INFORMATION
+================================= */
 
     const name =
         document.getElementById("checkoutName")?.value.trim();
@@ -2102,7 +2102,7 @@ function placeOrder() {
             0
         ),
 
-            customer: {
+        customer: {
 
             name: name,
 
@@ -2171,7 +2171,7 @@ function placeOrder() {
 
 document.addEventListener(
     "DOMContentLoaded",
-    function() {
+    function () {
         renderRewardHistory();
         renderOrderHistory();
         updateShopPoints();

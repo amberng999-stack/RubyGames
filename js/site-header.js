@@ -17,7 +17,7 @@
   }
 
   const pages = [
-    ['index.html', 'HOME'],
+    ['home.html', 'HOME'],
     ['News_2.html', 'NEWS'],
     ['tournaments.html', 'TOURNAMENTS'],
     ['game.html', 'GAMES'],
@@ -27,7 +27,7 @@
     ['shop.html', 'SHOP']
   ];
 
-  const pageFile = window.location.pathname.split('/').pop() || 'index.html';
+  const pageFile = window.location.pathname.split('/').pop() || 'home.html';
   const pageFolder = window.location.pathname.split('/').slice(-2, -1)[0] || '';
   const activeFile = pageFolder === 'News_Article'
     ? 'News_2.html'
@@ -36,7 +36,7 @@
       : pageFile === 'game-detail.html'
         ? 'game.html'
         : pageFile;
-  const isHome = activeFile.toLowerCase() === 'index.html';
+  const isHome = activeFile.toLowerCase() === 'home.html';
 
   if (!document.querySelector('link[href*="fonts.googleapis.com/css2?family=Poppins"]')) {
     const fontLink = document.createElement('link');
@@ -108,7 +108,7 @@
     header.className = 'ruby-unified-header';
     header.setAttribute('aria-label', 'Main navigation');
     header.innerHTML = `<div class="ruby-header-inner">
-      <a class="ruby-header-brand" href="${rootPrefix}index.html"><img src="${rootPrefix}images/ruby games logo white.png" alt="Ruby Games Logo"><span>RUBY GAMES</span></a>
+      <a class="ruby-header-brand" href="${rootPrefix}home.html"><img src="${rootPrefix}images/ruby games logo white.png" alt="Ruby Games Logo"><span>RUBY GAMES</span></a>
       <button class="ruby-header-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
       <div class="ruby-header-menu">${links}</div>
       ${isShopPage ? `<button class="ruby-header-cart" type="button" aria-label="Open shopping cart">&#128722;<span id="cartCount" class="ruby-header-cart-count">${cartQuantity}</span></button>` : ''}

@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>News</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>News</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="css/merged.css" />
   <link rel="stylesheet" href="css/page-loader.css">
 </head>
 
 <body>
-     <!-- ================= Background Video ================= -->
+  <!-- ================= Background Video ================= -->
   <video class="site-background-video" autoplay muted loop playsinline preload="metadata">
     <source src="images/7914864-hd_1920_1080_30fps.mp4" type="video/mp4" />
     Your browser does not support the video tag.
@@ -20,69 +23,69 @@
   <div class="site-background-overlay"></div>
 
   <main id="main">
-   <!-- ================= LOADING SCREEN ================= -->
+    <!-- ================= LOADING SCREEN ================= -->
     <div class="loader" id="loader" aria-live="polite">
-    <div class="loader__inner">
-      <div class="loader__top">
-        <div class="loader__logo">
-          <IMG src="images/ruby games logo white.png" alt="Ruby Games Logo" class="loader-logo" />
+      <div class="loader__inner">
+        <div class="loader__top">
+          <div class="loader__logo">
+            <IMG src="images/ruby games logo white.png" alt="Ruby Games Logo" class="loader-logo" />
+          </div>
+          <div class="loader__label"><i>LOADING....</i></div>
         </div>
-        <div class="loader__label"><i>LOADING....</i></div>
+
+        <div class="loader__line">
+          <div class="loader__progress" id="progress"></div>
+        </div>
+
+        <div class="loader__meta">
+          <span>CONNECTING TO NEWS SITE</span>
+          <span><b id="percent">0</b>%</span>
+        </div>
       </div>
 
-    <div class="loader__line">
-        <div class="loader__progress" id="progress"></div>
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker__track">
+          LOADING &nbsp;&nbsp;&nbsp;
+        </div>
       </div>
 
-      <div class="loader__meta">
-        <span>CONNECTING TO NEWS SITE</span>
-        <span><b id="percent">0</b>%</span>
-      </div>
     </div>
 
-    <div class="ticker" aria-hidden="true">
-      <div class="ticker__track">
-        LOADING &nbsp;&nbsp;&nbsp;
-      </div>
-    </div>
+    <!-- ================= NAVIGATION BAR ================= -->
+    <header class="site-navbar">
+      <nav class="navbar">
+        <div class="container">
+          <!-- Logo / Brand -->
+          <a class="navbar-brand" href="home.html">
+            <img src="images/ruby games logo white.png" alt="Ruby Games Logo" class="site-logo">
+            RUBY <span class="text-ruby">GAMES</span>
+          </a>
 
-  </div> 
-  
-<!-- ================= NAVIGATION BAR ================= -->
-<header class="site-navbar">
-  <nav class="navbar">
-    <div class="container">
-      <!-- Logo / Brand -->
-      <a class="navbar-brand" href="index.html">
-        <img src="images/ruby games logo white.png" alt="Ruby Games Logo" class="site-logo">
-        RUBY <span class="text-ruby">GAMES</span>
-      </a>
+          <!-- Mobile Hamburger Toggle -->
+          <button class="menu-btn btn btn-outline-ruby" id="navbarToggle" aria-label="Toggle navigation">
+            ☰
+          </button>
 
-      <!-- Mobile Hamburger Toggle -->
-      <button class="menu-btn btn btn-outline-ruby" id="navbarToggle" aria-label="Toggle navigation">
-        ☰
-      </button>
+          <!-- Nav Links -->
+          <div class="nav-links" id="navbarMenu">
+            <a class="nav-link" href="home.html">Home</a>
+            <a class="nav-link" href="News_2.html">News</a>
+            <a class="nav-link" href="tournaments.html">Tournaments</a>
+            <a class="btn btn-ruby" href="signin.html">Sign In</a>
+          </div>
+        </div>
+      </nav>
+    </header>
 
-      <!-- Nav Links -->
-      <div class="nav-links" id="navbarMenu">
-        <a class="nav-link" href="index.html">Home</a>
-        <a class="nav-link" href="News_2.html">News</a>
-        <a class="nav-link" href="tournaments.html">Tournaments</a>
-        <a class="btn btn-ruby" href="signin.html">Sign In</a>
-      </div>
-    </div>
-  </nav>
-</header>
-  
-  <!-- News Hero: introduces the news hub -->
+    <!-- News Hero: introduces the news hub -->
     <section class="hero news-featured">
-    <div class="container">
-      <h1><span class="ruby-text">News</span></h1>
-      <p>
-        Read our club's latest updates, event announcements,
-        and community news from here.
-      </p>
-    </div>
+      <div class="container">
+        <h1><span class="ruby-text">News</span></h1>
+        <p>
+          Read our club's latest updates, event announcements,
+          and community news from here.
+        </p>
+      </div>
     </section>
 
     <div class="container two-column">
@@ -110,88 +113,89 @@
 
     </div>
 
- <!-- ================= LATEST NEWS WITH FILTERS ================= -->
-  <section id="latestNews" class="section">
-    <div class="container">
-<div class="section-header-box">
-    <h2 class="section-title">Latest <span class="ruby-text">News</span></h2>
-    <p class="section-text">Click the buttons to filter news by category.</p>
-  </div>
+    <!-- ================= LATEST NEWS WITH FILTERS ================= -->
+    <section id="latestNews" class="section">
+      <div class="container">
+        <div class="section-header-box">
+          <h2 class="section-title">Latest <span class="ruby-text">News</span></h2>
+          <p class="section-text">Click the buttons to filter news by category.</p>
+        </div>
 
-      <!-- Filter buttons controlled by JavaScript -->
-      <div class="filter-buttons">
-        <button class="btn active" type="button" data-filter="all" aria-pressed="true">All</button>
-        <button class="btn" type="button" data-filter="tournament" aria-pressed="false">Tournament</button>
-        <button class="btn" type="button" data-filter="players" aria-pressed="false">Players</button>
-        <button class="btn" type="button" data-filter="workshop" aria-pressed="false">Workshop</button>
+        <!-- Filter buttons controlled by JavaScript -->
+        <div class="filter-buttons">
+          <button class="btn active" type="button" data-filter="all" aria-pressed="true">All</button>
+          <button class="btn" type="button" data-filter="tournament" aria-pressed="false">Tournament</button>
+          <button class="btn" type="button" data-filter="players" aria-pressed="false">Players</button>
+          <button class="btn" type="button" data-filter="workshop" aria-pressed="false">Workshop</button>
+        </div>
+
+        <!-- News list -->
+        <div class="news-list">
+
+          <div class="card news-item" data-category="tournament">
+            <a class="news-link" href="News_Article/season-opening.html">
+              <div class="news-number"></div>
+              <div>
+                <p class="ruby-text"><strong>TOURNAMENT · 12 AUG 2026</strong></p>
+                <h3>Registration Opens for the Ruby Campus Championship</h3>
+                <p>Build your team and prepare to compete across our featured esports titles.</p>
+              </div>
+              <div class="overlay"><span>Read the latest story</span></div>
+            </a>
+          </div>
+
+          <div class="card news-item" data-category="players">
+            <a class="news-link" href="teams.html">
+              <div class="news-number"></div>
+              <div>
+                <p class="ruby-text"><strong>PLAYERS · 8 AUG 2026</strong></p>
+                <h3>Meet the Players Representing Ruby Games</h3>
+                <p>Discover the roles, strengths and competitive backgrounds of our club roster.</p>
+              </div>
+              <div class="overlay"><span>Read the latest story</span></div>
+            </a>
+          </div>
+
+          <div class="card news-item" data-category="workshop">
+            <a class="news-link" href="booking.html">
+              <div class="news-number"></div>
+              <div>
+                <p class="ruby-text"><strong>WORKSHOP · 3 AUG 2026</strong></p>
+                <h3>Training Room Sessions Now Available</h3>
+                <p>Reserve a gaming room for coaching, strategy reviews and team practice.</p>
+              </div>
+              <div class="overlay"><span>Read the latest story</span></div>
+            </a>
+          </div>
+
+          <div class="card news-item" data-category="tournament">
+            <a class="news-link" href="tournaments.html">
+              <div class="news-number"></div>
+              <div>
+                <p class="ruby-text"><strong>TOURNAMENT · 28 JUL 2026</strong></p>
+                <h3>New Tournament Hub Goes Live</h3>
+                <p>View schedules, brackets and match reminders from one central competition hub.</p>
+              </div>
+              <div class="overlay"><span>Read the latest story</span></div>
+            </a>
+          </div>
+
+        </div>
       </div>
+    </section>
 
-      <!-- News list -->
-      <div class="news-list">
 
-        <div class="card news-item" data-category="tournament">
-          <a class="news-link" href="News_Article/season-opening.html">
-          <div class="news-number"></div>
-          <div>
-            <p class="ruby-text"><strong>TOURNAMENT · 12 AUG 2026</strong></p>
-            <h3>Registration Opens for the Ruby Campus Championship</h3>
-            <p>Build your team and prepare to compete across our featured esports titles.</p>
-          </div>
-          <div class="overlay"><span>Read the latest story</span></div>
-          </a>
-        </div>
-
-        <div class="card news-item" data-category="players">
-          <a class="news-link" href="teams.html">
-          <div class="news-number"></div>
-          <div>
-            <p class="ruby-text"><strong>PLAYERS · 8 AUG 2026</strong></p>
-            <h3>Meet the Players Representing Ruby Games</h3>
-            <p>Discover the roles, strengths and competitive backgrounds of our club roster.</p>
-          </div>
-          <div class="overlay"><span>Read the latest story</span></div>
-          </a>
-        </div>
-
-        <div class="card news-item" data-category="workshop">
-          <a class="news-link" href="booking.html">
-          <div class="news-number"></div>
-          <div>
-            <p class="ruby-text"><strong>WORKSHOP · 3 AUG 2026</strong></p>
-            <h3>Training Room Sessions Now Available</h3>
-            <p>Reserve a gaming room for coaching, strategy reviews and team practice.</p>
-          </div>
-          <div class="overlay"><span>Read the latest story</span></div>
-          </a>
-        </div>
-
-        <div class="card news-item" data-category="tournament">
-          <a class="news-link" href="tournaments.html">
-          <div class="news-number"></div>
-          <div>
-            <p class="ruby-text"><strong>TOURNAMENT · 28 JUL 2026</strong></p>
-            <h3>New Tournament Hub Goes Live</h3>
-            <p>View schedules, brackets and match reminders from one central competition hub.</p>
-          </div>
-          <div class="overlay"><span>Read the latest story</span></div>
-          </a>
-        </div>
-
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+      <div class="container">
+        <img src="images/ruby games logo white.png" alt="Ruby Games Logo" class="footer-logo" />
+        <p>This website is owned and operated by Ruby Games. © 2026 Ruby Games. All rights reserved.</p>
       </div>
-    </div>
-  </section>
-
-
-<!-- ================= FOOTER ================= -->
-  <footer class="footer">
-    <div class="container">
-      <img src="images/ruby games logo white.png" alt="Ruby Games Logo" class="footer-logo" />
-      <p>This website is owned and operated by Ruby Games. © 2026 Ruby Games. All rights reserved.</p>
-    </div>
-  </footer>
-</main>
-<script src="js/App.js"></script>
-<script src="js/loading.js"></script>
-<script src="js/site-header.js"></script>
+    </footer>
+  </main>
+  <script src="js/App.js"></script>
+  <script src="js/loading.js"></script>
+  <script src="js/site-header.js"></script>
 </body>
+
 </html>

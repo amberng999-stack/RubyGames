@@ -559,8 +559,8 @@
   <div class="loader" id="loader" aria-live="polite">
     <div class="loader__inner">
       <div class="loader__top">
-        <div class="loader__logo"><img src="images/ruby games logo white.png" alt="Ruby Games Logo"
-            class="loader-logo"></div>
+        <div class="loader__logo"><img src="images/ruby games logo white.png" alt="Ruby Games Logo" class="loader-logo">
+        </div>
         <div class="loader__label"><i>LOADING....</i></div>
       </div>
       <div class="loader__line">
@@ -576,8 +576,8 @@
   <div id="cdnWarning">⚠️ Some styles failed to load. Please check your internet connection.</div>
 
   <nav class="navbar navbar-expand-lg navbar-dark navbar-ruby site-navbar fixed-top">
-    <div class="container"><a class="navbar-brand" href="index.html">RUBY <span>GAMES</span></a>
-      <div class="navbar-nav ms-auto"><a class="nav-link" href="index.html">Home</a><a class="nav-link"
+    <div class="container"><a class="navbar-brand" href="home.html">RUBY <span>GAMES</span></a>
+      <div class="navbar-nav ms-auto"><a class="nav-link" href="home.html">Home</a><a class="nav-link"
           href="News_2.html">News</a><a class="nav-link" href="tournaments.html">Tournaments</a><a class="nav-link"
           href="game.html">Games</a><a class="nav-link active" href="booking.html">Booking</a><a class="nav-link"
           href="teams.html">Teams</a><a class="nav-link" href="mission.html">Missions</a><a class="nav-link"
@@ -696,7 +696,7 @@
       if (typeof bootstrap === 'undefined' && toggler && navMenu) {
         toggler.addEventListener('click', () => navMenu.classList.toggle('show'));
       }
-      const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+      const currentPage = window.location.pathname.split('/').pop() || 'home.html';
       document.querySelectorAll('.nav-link').forEach(link => {
         if (link.getAttribute('data-page') === currentPage) link.classList.add('active');
       });

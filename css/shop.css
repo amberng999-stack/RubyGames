@@ -159,17 +159,13 @@
 
     background:
 
-        radial-gradient(
-            circle at 50% 20%,
+        radial-gradient(circle at 50% 20%,
             rgba(155, 17, 30, .42),
-            transparent 38%
-        ),
+            transparent 38%),
 
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             #000000,
-            #190307
-        );
+            #190307);
 
     border-bottom: 1px solid #28070b;
 
@@ -328,11 +324,9 @@
     margin-bottom: 65px;
 
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             #171717,
-            #0d0d0d
-        );
+            #0d0d0d);
 
     border: 1px solid #3c0a0f;
 
@@ -341,7 +335,7 @@
     border-radius: 12px;
 
     box-shadow:
-        0 15px 45px rgba(0,0,0,.45);
+        0 15px 45px rgba(0, 0, 0, .45);
 
 }
 
@@ -479,7 +473,7 @@
 }
 
 
-.shop-section-heading > span {
+.shop-section-heading>span {
 
     color: #B3B3B3;
 
@@ -526,7 +520,7 @@
     border-color: #9B111E;
 
     box-shadow:
-        0 15px 40px rgba(155,17,30,.18);
+        0 15px 40px rgba(155, 17, 30, .18);
 
 }
 
@@ -548,11 +542,9 @@
     overflow: hidden;
 
     background:
-        radial-gradient(
-            circle at center,
+        radial-gradient(circle at center,
             #2a070b,
-            #080808 70%
-        );
+            #080808 70%);
 }
 
 .shop-product-image img {
@@ -576,8 +568,7 @@
     height: 130px;
 
     border:
-        1px solid
-        rgba(155,17,30,.3);
+        1px solid rgba(155, 17, 30, .3);
 
     transform: rotate(45deg);
 
@@ -627,11 +618,10 @@
 
     margin-bottom: 12px;
 
-    background: rgba(155,17,30,.12);
+    background: rgba(155, 17, 30, .12);
 
     border:
-        1px solid
-        rgba(155,17,30,.5);
+        1px solid rgba(155, 17, 30, .5);
 
     border-radius: 4px;
 
@@ -761,7 +751,7 @@
     border-color: #bd1828;
 
     box-shadow:
-        0 0 18px rgba(155,17,30,.35);
+        0 0 18px rgba(155, 17, 30, .35);
 
 }
 
@@ -1012,7 +1002,7 @@
     }
 
 
-    .shop-section-heading > span {
+    .shop-section-heading>span {
 
         white-space: normal;
 
@@ -1134,7 +1124,7 @@
 
     border-left: 1px solid #3c0a0f;
 
-    box-shadow: -15px 0 45px rgba(0,0,0,.6);
+    box-shadow: -15px 0 45px rgba(0, 0, 0, .6);
 
     transition: right .3s ease;
 
@@ -1310,7 +1300,7 @@
 }
 
 
-.cart-footer > div {
+.cart-footer>div {
 
     display: flex;
 
@@ -1421,7 +1411,7 @@
 }
 
 
-.cart-quantity > span {
+.cart-quantity>span {
 
     min-width: 20px;
 
@@ -1534,7 +1524,7 @@
 
     border-left: 1px solid #3c0a0f;
 
-    box-shadow: -15px 0 45px rgba(0,0,0,.7);
+    box-shadow: -15px 0 45px rgba(0, 0, 0, .7);
 
     transition: right .3s ease;
 
@@ -1622,7 +1612,7 @@
 }
 
 
-.checkout-item > div {
+.checkout-item>div {
 
     display: flex;
 
@@ -1653,7 +1643,7 @@
 }
 
 
-.checkout-item > strong {
+.checkout-item>strong {
 
     color: var(--ruby-red);
 
@@ -1922,7 +1912,7 @@
 }
 
 
-.checkout-item > strong {
+.checkout-item>strong {
 
     font-size: .9rem;
 
@@ -2085,7 +2075,7 @@
     }
 
 
-    .checkout-item > strong {
+    .checkout-item>strong {
 
         font-size: .8rem;
 
@@ -2132,11 +2122,9 @@
     padding: 18px 22px;
 
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             #171717,
-            #0f0f0f
-        );
+            #0f0f0f);
 
     border: 1px solid #2d2d2d;
 
@@ -2363,9 +2351,7 @@
     display: grid;
 
     grid-template-columns:
-        minmax(0, 1fr)
-        90px
-        28px;
+        minmax(0, 1fr) 90px 28px;
 
     align-items: center;
 
@@ -2374,11 +2360,9 @@
     padding: 18px 22px;
 
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             #171717,
-            #0f0f0f
-        );
+            #0f0f0f);
 
     border: 1px solid #2d2d2d;
 
@@ -2651,9 +2635,7 @@
     .order-history-item {
 
         grid-template-columns:
-            minmax(0, 1fr)
-            auto
-            24px;
+            minmax(0, 1fr) auto 24px;
 
         column-gap: 12px;
 
@@ -2734,9 +2716,9 @@
 
     padding: 12px 0;
 
-    border-top: 1px solid rgba(255,255,255,0.08);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
 
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 
 }
 
@@ -2795,7 +2777,7 @@
 
     padding: 12px 0;
 
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 
 }
 
@@ -2843,7 +2825,7 @@
 
     padding-top: 15px;
 
-    border-top: 1px solid rgba(255,255,255,0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 
 }
 
