@@ -15,7 +15,7 @@
 </head>
 
 <body>
-  <!-- ================= Background Video ================= -->
+
   <video class="site-background-video" autoplay muted loop playsinline preload="metadata">
     <source src="images/7914864-hd_1920_1080_30fps.mp4" type="video/mp4" />
     Your browser does not support the video tag.
@@ -23,7 +23,7 @@
   <div class="site-background-overlay"></div>
 
   <main id="main">
-    <!-- ================= LOADING SCREEN ================= -->
+
     <div class="loader" id="loader" aria-live="polite">
       <div class="loader__inner">
         <div class="loader__top">
@@ -51,22 +51,19 @@
 
     </div>
 
-    <!-- ================= NAVIGATION BAR ================= -->
     <header class="site-navbar">
       <nav class="navbar">
         <div class="container">
-          <!-- Logo / Brand -->
+   
           <a class="navbar-brand" href="index.html">
             <img src="images/ruby games logo white.png" alt="Ruby Games Logo" class="site-logo">
             RUBY <span class="text-ruby">GAMES</span>
           </a>
 
-          <!-- Mobile Hamburger Toggle -->
           <button class="menu-btn btn btn-outline-ruby" id="navbarToggle" aria-label="Toggle navigation">
             ☰
           </button>
 
-          <!-- Nav Links -->
           <div class="nav-links" id="navbarMenu">
             <a class="nav-link" href="index.html">Home</a>
             <a class="nav-link" href="News_2.html">News</a>
@@ -77,7 +74,6 @@
       </nav>
     </header>
 
-    <!-- News Hero: introduces the news hub -->
     <section class="hero news-featured">
       <div class="container">
         <h1><span class="ruby-text">News</span></h1>
@@ -90,7 +86,6 @@
 
     <div class="container two-column">
 
-      <!-- Main news card -->
       <div class="hero card">
         <h2 class="section-title">Featured <span class="ruby-text">Story</span></h2>
         <h3>Ruby Games Opens Its 2026 Competitive Season</h3>
@@ -99,7 +94,6 @@
         <a href="News_Article/season-opening.html" class="btn btn-primary">Read News</a>
       </div>
 
-      <!-- Editor pick card -->
       <div class="hero card">
         <h2 class="section-title">Editor <span class="ruby-text">Pick</span></h2>
         <div class="editor-pick-media">
@@ -113,7 +107,6 @@
 
     </div>
 
-    <!-- ================= LATEST NEWS WITH FILTERS ================= -->
     <section id="latestNews" class="section">
       <div class="container">
         <div class="section-header-box">
@@ -121,7 +114,6 @@
           <p class="section-text">Click the buttons to filter news by category.</p>
         </div>
 
-        <!-- Filter buttons controlled by JavaScript -->
         <div class="filter-buttons">
           <button class="btn active" type="button" data-filter="all" aria-pressed="true">All</button>
           <button class="btn" type="button" data-filter="tournament" aria-pressed="false">Tournament</button>
@@ -129,7 +121,6 @@
           <button class="btn" type="button" data-filter="workshop" aria-pressed="false">Workshop</button>
         </div>
 
-        <!-- News list -->
         <div class="news-list">
 
           <div class="card news-item" data-category="tournament">
@@ -184,8 +175,6 @@
       </div>
     </section>
 
-
-    <!-- ================= FOOTER ================= -->
     <footer class="footer">
       <div class="container">
         <img src="images/ruby games logo white.png" alt="Ruby Games Logo" class="footer-logo" />
