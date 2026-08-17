@@ -1,7 +1,7 @@
 const gamesData = {
   valorant: {
     name: "VALORANT",
-    banner: "images/valorant.jpg",
+    banner: "../images/valorant.jpg",
     genre: "Tactical FPS",
     platform: "PC",
     developer: "Riot Games",
@@ -10,7 +10,7 @@ const gamesData = {
   },
   lol: {
     name: "League of Legends",
-    banner: "images/lol.jpg",
+    banner: "../images/lol.jpg",
     genre: "MOBA",
     platform: "PC",
     developer: "Riot Games",
@@ -19,7 +19,7 @@ const gamesData = {
   },
   mlbb: {
     name: "Mobile Legends: Bang Bang",
-    banner: "images/mlbb.jpg",
+    banner: "../images/mlbb.jpg",
     genre: "Mobile MOBA",
     platform: "Mobile (Android/iOS)",
     developer: "Moonton",
@@ -28,7 +28,7 @@ const gamesData = {
   },
   cs2: {
     name: "Counter-Strike 2",
-    banner: "images/cs2.jpg",
+    banner: "../images/cs2.jpg",
     genre: "Tactical FPS",
     platform: "PC",
     developer: "Valve",
@@ -37,7 +37,7 @@ const gamesData = {
   },
   dota2: {
     name: "Dota 2",
-    banner: "images/dota2.jpg",
+    banner: "../images/dota2.jpg",
     genre: "MOBA",
     platform: "PC",
     developer: "Valve",
@@ -46,7 +46,7 @@ const gamesData = {
   },
   pubgm: {
     name: "PUBG Mobile",
-    banner: "images/pubgm.jpg",
+    banner: "../images/pubgm.jpg",
     genre: "Battle Royale",
     platform: "Mobile (Android/iOS)",
     developer: "KRAFTON / Tencent",

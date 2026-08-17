@@ -13,6 +13,7 @@ function setupNewsFilters() {
 
       filterButtons.forEach(function (btn) {
         btn.classList.toggle('active', btn === button);
+        btn.setAttribute('aria-pressed', btn === button ? 'true' : 'false');
       });
 
       newsItems.forEach(function (item) {

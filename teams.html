@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -12,28 +13,123 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/page-loader.css">
   <style>
-    .players-hero { padding: 9rem 0 4rem; background: radial-gradient(circle at 80% 25%,rgba(155,17,30,.45),transparent 35%),linear-gradient(135deg,#000,#190307) }
-    .players-hero h1 { font-size: clamp(3.2rem,8vw,6rem) }
-    .tournament-roster { padding: 5rem 0; scroll-margin-top: 70px }
-    .tournament-roster:nth-child(even) { background: #080808 }
-    .roster-heading { padding-left: 1rem; border-left: 4px solid var(--ruby-red) }
-    .player-card { position: relative; height: 100%; overflow: hidden; background: var(--dark-gray); border: 1px solid #3c0a0f; transition: .25s }
-    .player-card:hover { transform: translateY(-5px); border-color: var(--ruby-red); box-shadow: 0 12px 35px rgba(155,17,30,.22) }
-    .player-rank { position: absolute; top: .8rem; right: .8rem; z-index: 1; width: 42px; height: 42px; display: grid; place-items: center; border-radius: 50%; background: var(--ruby-red); font-weight: 700 }
-    .player-avatar { width: 100%; height: 230px; display: block; object-fit: cover; object-position: center 22%; background: linear-gradient(135deg,#2a0509,#080808) }
-    .player-meta { display: grid; grid-template-columns: auto 1fr; gap: .45rem 1rem; margin: 1.25rem 0 0 }
-    .player-meta dt { color: var(--light-gray); font-weight: 500 }
-    .player-meta dd { margin: 0; text-align: right; font-weight: 600 }
-    .quick-nav { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 2rem }
+    .players-hero {
+      padding: 9rem 0 4rem;
+      background: radial-gradient(circle at 80% 25%, rgba(155, 17, 30, .45), transparent 35%), linear-gradient(135deg, #000, #190307)
+    }
+
+    .players-hero h1 {
+      font-size: clamp(3.2rem, 8vw, 6rem)
+    }
+
+    .tournament-roster {
+      padding: 5rem 0;
+      scroll-margin-top: 70px
+    }
+
+    .tournament-roster:nth-child(even) {
+      background: #080808
+    }
+
+    .roster-heading {
+      padding-left: 1rem;
+      border-left: 4px solid var(--ruby-red)
+    }
+
+    .player-card {
+      position: relative;
+      height: 100%;
+      overflow: hidden;
+      background: var(--dark-gray);
+      border: 1px solid #3c0a0f;
+      transition: .25s
+    }
+
+    .player-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--ruby-red);
+      box-shadow: 0 12px 35px rgba(155, 17, 30, .22)
+    }
+
+    .player-rank {
+      position: absolute;
+      top: .8rem;
+      right: .8rem;
+      z-index: 1;
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--ruby-red);
+      font-weight: 700
+    }
+
+    .player-avatar {
+      width: 100%;
+      height: 230px;
+      display: block;
+      object-fit: cover;
+      object-position: center 22%;
+      background: linear-gradient(135deg, #2a0509, #080808)
+    }
+
+    .player-meta {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: .45rem 1rem;
+      margin: 1.25rem 0 0
+    }
+
+    .player-meta dt {
+      color: var(--light-gray);
+      font-weight: 500
+    }
+
+    .player-meta dd {
+      margin: 0;
+      text-align: right;
+      font-weight: 600
+    }
+
+    .quick-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .65rem;
+      margin-top: 2rem
+    }
   </style>
 </head>
+
 <body>
-  <div class="loader" id="loader" aria-live="polite"><div class="loader__inner"><div class="loader__top"><div class="loader__logo"><img src="Assets/IMG/ruby games logo white.png" alt="Ruby Games Logo" class="loader-logo"></div><div class="loader__label"><i>LOADING....</i></div></div><div class="loader__line"><div class="loader__progress" id="progress"></div></div><div class="loader__meta"><span>CONNECTING TO TEAMS</span><span><b id="percent">0</b>%</span></div></div><div class="ticker" aria-hidden="true"><div class="ticker__track">LOADING &nbsp;&nbsp;&nbsp; LOADING &nbsp;&nbsp;&nbsp;</div></div></div>
+  <div class="loader" id="loader" aria-live="polite">
+    <div class="loader__inner">
+      <div class="loader__top">
+        <div class="loader__logo"><img src="images/ruby games logo white.png" alt="Ruby Games Logo"
+            class="loader-logo"></div>
+        <div class="loader__label"><i>LOADING....</i></div>
+      </div>
+      <div class="loader__line">
+        <div class="loader__progress" id="progress"></div>
+      </div>
+      <div class="loader__meta"><span>CONNECTING TO TEAMS</span><span><b id="percent">0</b>%</span></div>
+    </div>
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker__track">LOADING &nbsp;&nbsp;&nbsp; LOADING &nbsp;&nbsp;&nbsp;</div>
+    </div>
+  </div>
   <nav class="navbar navbar-expand-lg navbar-dark site-navbar fixed-top">
     <div class="container">
-      <a class="navbar-brand d-flex align-items-center" href="index.html"><img src="images/ruby games logo white.png" alt="Ruby Games Logo" class="site-logo"><span class="ms-2">RUBY GAMES</span></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#siteMenu" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-      <div class="collapse navbar-collapse" id="siteMenu"><ul class="navbar-nav ms-auto me-lg-3"><li class="nav-item"><a class="nav-link" href="index.html">HOME</a></li></ul><div id="navbarAuth" class="navbar-user d-lg-flex align-items-center"></div></div>
+      <a class="navbar-brand d-flex align-items-center" href="index.html"><img src="images/ruby games logo white.png"
+          alt="Ruby Games Logo" class="site-logo"><span class="ms-2">RUBY GAMES</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#siteMenu"
+        aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="siteMenu">
+        <ul class="navbar-nav ms-auto me-lg-3">
+          <li class="nav-item"><a class="nav-link" href="index.html">HOME</a></li>
+        </ul>
+        <div id="navbarAuth" class="navbar-user d-lg-flex align-items-center"></div>
+      </div>
     </div>
   </nav>
 
@@ -53,44 +149,254 @@
   <main>
     <section id="league-players" class="tournament-roster">
       <div class="container">
-        <div class="roster-heading mb-4"><p class="text-ruby fw-bold mb-1">TOURNAMENT 01</p><h2>LEAGUE OF LEGENDS CHAMPIONSHIP</h2><p class="text-secondary-custom mb-0">Top four players based on tournament performance.</p></div>
+        <div class="roster-heading mb-4">
+          <p class="text-ruby fw-bold mb-1">TOURNAMENT 01</p>
+          <h2>LEAGUE OF LEGENDS CHAMPIONSHIP</h2>
+          <p class="text-secondary-custom mb-0">Top four players based on tournament performance.</p>
+        </div>
         <div class="row g-4">
-          <div class="col-md-6 col-xl-3"><article class="player-card"><span class="player-rank">#1</span><img class="player-avatar" src="images/players/axiom.png" alt="Axiom"><div class="p-4"><h3>AXIOM</h3><p class="text-ruby mb-2">Team SoloMid</p><dl class="player-meta"><dt>Role</dt><dd>Mid Lane</dd><dt>KDA</dt><dd>8.4</dd><dt>MVPs</dt><dd>5</dd></dl></div></article></div>
-          <div class="col-md-6 col-xl-3"><article class="player-card"><span class="player-rank">#2</span><img class="player-avatar" src="images/players/vanta.png" alt="Vanta"><div class="p-4"><h3>VANTA</h3><p class="text-ruby mb-2">Team Liquid</p><dl class="player-meta"><dt>Role</dt><dd>Jungle</dd><dt>KDA</dt><dd>7.9</dd><dt>MVPs</dt><dd>4</dd></dl></div></article></div>
-          <div class="col-md-6 col-xl-3"><article class="player-card"><span class="player-rank">#3</span><img class="player-avatar" src="images/players/kairu.png" alt="Kairu"><div class="p-4"><h3>KAIRU</h3><p class="text-ruby mb-2">Gen.G</p><dl class="player-meta"><dt>Role</dt><dd>ADC</dd><dt>KDA</dt><dd>7.5</dd><dt>MVPs</dt><dd>3</dd></dl></div></article></div>
-          <div class="col-md-6 col-xl-3"><article class="player-card"><span class="player-rank">#4</span><img class="player-avatar" src="images/players/nyx.png" alt="Nyx"><div class="p-4"><h3>NYX</h3><p class="text-ruby mb-2">PSG Talon</p><dl class="player-meta"><dt>Role</dt><dd>Support</dd><dt>KDA</dt><dd>7.1</dd><dt>MVPs</dt><dd>2</dd></dl></div></article></div>
+          <div class="col-md-6 col-xl-3">
+            <article class="player-card"><span class="player-rank">#1</span><img class="player-avatar"
+                src="images/players/axiom.png" alt="Axiom">
+              <div class="p-4">
+                <h3>AXIOM</h3>
+                <p class="text-ruby mb-2">Team SoloMid</p>
+                <dl class="player-meta">
+                  <dt>Role</dt>
+                  <dd>Mid Lane</dd>
+                  <dt>KDA</dt>
+                  <dd>8.4</dd>
+                  <dt>MVPs</dt>
+                  <dd>5</dd>
+                </dl>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-6 col-xl-3">
+            <article class="player-card"><span class="player-rank">#2</span><img class="player-avatar"
+                src="images/players/vanta.png" alt="Vanta">
+              <div class="p-4">
+                <h3>VANTA</h3>
+                <p class="text-ruby mb-2">Team Liquid</p>
+                <dl class="player-meta">
+                  <dt>Role</dt>
+                  <dd>Jungle</dd>
+                  <dt>KDA</dt>
+                  <dd>7.9</dd>
+                  <dt>MVPs</dt>
+                  <dd>4</dd>
+                </dl>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-6 col-xl-3">
+            <article class="player-card"><span class="player-rank">#3</span><img class="player-avatar"
+                src="images/players/kairu.png" alt="Kairu">
+              <div class="p-4">
+                <h3>KAIRU</h3>
+                <p class="text-ruby mb-2">Gen.G</p>
+                <dl class="player-meta">
+                  <dt>Role</dt>
+                  <dd>ADC</dd>
+                  <dt>KDA</dt>
+                  <dd>7.5</dd>
+                  <dt>MVPs</dt>
+                  <dd>3</dd>
+                </dl>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-6 col-xl-3">
+            <article class="player-card"><span class="player-rank">#4</span><img class="player-avatar"
+                src="images/players/nyx.png" alt="Nyx">
+              <div class="p-4">
+                <h3>NYX</h3>
+                <p class="text-ruby mb-2">PSG Talon</p>
+                <dl class="player-meta">
+                  <dt>Role</dt>
+                  <dd>Support</dd>
+                  <dt>KDA</dt>
+                  <dd>7.1</dd>
+                  <dt>MVPs</dt>
+                  <dd>2</dd>
+                </dl>
+              </div>
+            </article>
+          </div>
         </div>
       </div>
     </section>
 
     <section id="honour-players" class="tournament-roster">
       <div class="container">
-        <div class="roster-heading mb-4"><p class="text-ruby fw-bold mb-1">TOURNAMENT 02</p><h2>HONOUR OF KINGS CHAMPIONSHIP</h2><p class="text-secondary-custom mb-0">Top four players based on tournament performance.</p></div>
+        <div class="roster-heading mb-4">
+          <p class="text-ruby fw-bold mb-1">TOURNAMENT 02</p>
+          <h2>HONOUR OF KINGS CHAMPIONSHIP</h2>
+          <p class="text-secondary-custom mb-0">Top four players based on tournament performance.</p>
+        </div>
         <div class="row g-4">
-          <div class="col-md-6 col-xl-3"><article class="player-card"><span class="player-rank">#1</span><img class="player-avatar" src="images/players/ryujin.png" alt="Ryujin"><div class="p-4"><h3>RYUJIN</h3><p class="text-ruby mb-2">Royal Never Give Up</p><dl class="player-meta"><dt>Role</dt><dd>Clash Lane</dd><dt>KDA</dt><dd>9.0</dd><dt>MVPs</dt><dd>6</dd></dl></div></article></div>
-          <div class="col-md-6 col-xl-3"><article class="player-card"><span class="player-rank">#2</span><img class="player-avatar" src="images/players/ember.png" alt="Ember"><div class="p-4"><h3>EMBER</h3><p class="text-ruby mb-2">EDward Gaming</p><dl class="player-meta"><dt>Role</dt><dd>Jungler</dd><dt>KDA</dt><dd>8.2</dd><dt>MVPs</dt><dd>4</dd></dl></div></article></div>
-          <div class="col-md-6 col-xl-3"><article class="player-card"><span class="player-rank">#3</span><img class="player-avatar" src="images/players/strix.png" alt="Strix"><div class="p-4"><h3>STRIX</h3><p class="text-ruby mb-2">Team WE</p><dl class="player-meta"><dt>Role</dt><dd>Farm Lane</dd><dt>KDA</dt><dd>7.8</dd><dt>MVPs</dt><dd>3</dd></dl></div></article></div>
-          <div class="col-md-6 col-xl-3"><article class="player-card"><span class="player-rank">#4</span><img class="player-avatar" src="images/players/lumen.png" alt="Lumen"><div class="p-4"><h3>LUMEN</h3><p class="text-ruby mb-2">J Team</p><dl class="player-meta"><dt>Role</dt><dd>Roamer</dd><dt>KDA</dt><dd>7.3</dd><dt>MVPs</dt><dd>2</dd></dl></div></article></div>
+          <div class="col-md-6 col-xl-3">
+            <article class="player-card"><span class="player-rank">#1</span><img class="player-avatar"
+                src="images/players/ryujin.png" alt="Ryujin">
+              <div class="p-4">
+                <h3>RYUJIN</h3>
+                <p class="text-ruby mb-2">Royal Never Give Up</p>
+                <dl class="player-meta">
+                  <dt>Role</dt>
+                  <dd>Clash Lane</dd>
+                  <dt>KDA</dt>
+                  <dd>9.0</dd>
+                  <dt>MVPs</dt>
+                  <dd>6</dd>
+                </dl>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-6 col-xl-3">
+            <article class="player-card"><span class="player-rank">#2</span><img class="player-avatar"
+                src="images/players/ember.png" alt="Ember">
+              <div class="p-4">
+                <h3>EMBER</h3>
+                <p class="text-ruby mb-2">EDward Gaming</p>
+                <dl class="player-meta">
+                  <dt>Role</dt>
+                  <dd>Jungler</dd>
+                  <dt>KDA</dt>
+                  <dd>8.2</dd>
+                  <dt>MVPs</dt>
+                  <dd>4</dd>
+                </dl>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-6 col-xl-3">
+            <article class="player-card"><span class="player-rank">#3</span><img class="player-avatar"
+                src="images/players/strix.png" alt="Strix">
+              <div class="p-4">
+                <h3>STRIX</h3>
+                <p class="text-ruby mb-2">Team WE</p>
+                <dl class="player-meta">
+                  <dt>Role</dt>
+                  <dd>Farm Lane</dd>
+                  <dt>KDA</dt>
+                  <dd>7.8</dd>
+                  <dt>MVPs</dt>
+                  <dd>3</dd>
+                </dl>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-6 col-xl-3">
+            <article class="player-card"><span class="player-rank">#4</span><img class="player-avatar"
+                src="images/players/lumen.png" alt="Lumen">
+              <div class="p-4">
+                <h3>LUMEN</h3>
+                <p class="text-ruby mb-2">J Team</p>
+                <dl class="player-meta">
+                  <dt>Role</dt>
+                  <dd>Roamer</dd>
+                  <dt>KDA</dt>
+                  <dd>7.3</dd>
+                  <dt>MVPs</dt>
+                  <dd>2</dd>
+                </dl>
+              </div>
+            </article>
+          </div>
         </div>
       </div>
     </section>
 
     <section id="mobile-players" class="tournament-roster">
       <div class="container">
-        <div class="roster-heading mb-4"><p class="text-ruby fw-bold mb-1">TOURNAMENT 03</p><h2>MOBILE LEGENDS CHAMPIONSHIP</h2><p class="text-secondary-custom mb-0">Top four players based on tournament performance.</p></div>
+        <div class="roster-heading mb-4">
+          <p class="text-ruby fw-bold mb-1">TOURNAMENT 03</p>
+          <h2>MOBILE LEGENDS CHAMPIONSHIP</h2>
+          <p class="text-secondary-custom mb-0">Top four players based on tournament performance.</p>
+        </div>
         <div class="row g-4">
-          <div class="col-md-6 col-xl-3"><article class="player-card"><span class="player-rank">#1</span><img class="player-avatar" src="images/players/zephyr.png" alt="Zephyr"><div class="p-4"><h3>ZEPHYR</h3><p class="text-ruby mb-2">Sentinels</p><dl class="player-meta"><dt>Role</dt><dd>Jungler</dd><dt>KDA</dt><dd>8.8</dd><dt>MVPs</dt><dd>5</dd></dl></div></article></div>
-          <div class="col-md-6 col-xl-3"><article class="player-card"><span class="player-rank">#2</span><img class="player-avatar" src="images/players/onyx.png" alt="Onyx"><div class="p-4"><h3>ONYX</h3><p class="text-ruby mb-2">DRX</p><dl class="player-meta"><dt>Role</dt><dd>Gold Lane</dd><dt>KDA</dt><dd>8.1</dd><dt>MVPs</dt><dd>4</dd></dl></div></article></div>
-          <div class="col-md-6 col-xl-3"><article class="player-card"><span class="player-rank">#3</span><img class="player-avatar" src="images/players/ruby.png" alt="Ruby"><div class="p-4"><h3>RUBY</h3><p class="text-ruby mb-2">Fnatic</p><dl class="player-meta"><dt>Role</dt><dd>Mid Lane</dd><dt>KDA</dt><dd>7.6</dd><dt>MVPs</dt><dd>3</dd></dl></div></article></div>
-          <div class="col-md-6 col-xl-3"><article class="player-card"><span class="player-rank">#4</span><img class="player-avatar" src="images/players/flare.png" alt="Flare"><div class="p-4"><h3>FLARE</h3><p class="text-ruby mb-2">Paper Rex</p><dl class="player-meta"><dt>Role</dt><dd>Roamer</dd><dt>KDA</dt><dd>7.2</dd><dt>MVPs</dt><dd>2</dd></dl></div></article></div>
+          <div class="col-md-6 col-xl-3">
+            <article class="player-card"><span class="player-rank">#1</span><img class="player-avatar"
+                src="images/players/zephyr.png" alt="Zephyr">
+              <div class="p-4">
+                <h3>ZEPHYR</h3>
+                <p class="text-ruby mb-2">Sentinels</p>
+                <dl class="player-meta">
+                  <dt>Role</dt>
+                  <dd>Jungler</dd>
+                  <dt>KDA</dt>
+                  <dd>8.8</dd>
+                  <dt>MVPs</dt>
+                  <dd>5</dd>
+                </dl>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-6 col-xl-3">
+            <article class="player-card"><span class="player-rank">#2</span><img class="player-avatar"
+                src="images/players/onyx.png" alt="Onyx">
+              <div class="p-4">
+                <h3>ONYX</h3>
+                <p class="text-ruby mb-2">DRX</p>
+                <dl class="player-meta">
+                  <dt>Role</dt>
+                  <dd>Gold Lane</dd>
+                  <dt>KDA</dt>
+                  <dd>8.1</dd>
+                  <dt>MVPs</dt>
+                  <dd>4</dd>
+                </dl>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-6 col-xl-3">
+            <article class="player-card"><span class="player-rank">#3</span><img class="player-avatar"
+                src="images/players/ruby.png" alt="Ruby">
+              <div class="p-4">
+                <h3>RUBY</h3>
+                <p class="text-ruby mb-2">Fnatic</p>
+                <dl class="player-meta">
+                  <dt>Role</dt>
+                  <dd>Mid Lane</dd>
+                  <dt>KDA</dt>
+                  <dd>7.6</dd>
+                  <dt>MVPs</dt>
+                  <dd>3</dd>
+                </dl>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-6 col-xl-3">
+            <article class="player-card"><span class="player-rank">#4</span><img class="player-avatar"
+                src="images/players/flare.png" alt="Flare">
+              <div class="p-4">
+                <h3>FLARE</h3>
+                <p class="text-ruby mb-2">Paper Rex</p>
+                <dl class="player-meta">
+                  <dt>Role</dt>
+                  <dd>Roamer</dd>
+                  <dt>KDA</dt>
+                  <dd>7.2</dd>
+                  <dt>MVPs</dt>
+                  <dd>2</dd>
+                </dl>
+              </div>
+            </article>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer text-center"><div class="container">&copy; 2026 Ruby Esports Club &middot; Front-end assignment</div></footer>
+  <footer class="site-footer text-center">
+    <div class="container">&copy; 2026 Ruby Esports Club &middot; Front-end assignment</div>
+  </footer>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="js/storage.js"></script><script src="js/auth.js"></script><script src="js/main.js"></script><script src="Assets/JS/loading.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/loading.js"></script>
 </body>
+
 </html>

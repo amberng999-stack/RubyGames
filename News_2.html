@@ -7,14 +7,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="Assets/Css/merged.css" />
+  <link rel="stylesheet" href="css/merged.css" />
   <link rel="stylesheet" href="css/page-loader.css">
 </head>
 
 <body>
      <!-- ================= Background Video ================= -->
   <video class="site-background-video" autoplay muted loop playsinline preload="metadata">
-    <source src="Assets/IMG/7914864-hd_1920_1080_30fps.mp4" type="video/mp4" />
+    <source src="images/7914864-hd_1920_1080_30fps.mp4" type="video/mp4" />
     Your browser does not support the video tag.
   </video>
   <div class="site-background-overlay"></div>
@@ -25,7 +25,7 @@
     <div class="loader__inner">
       <div class="loader__top">
         <div class="loader__logo">
-          <IMG src="Assets/IMG/ruby games logo white.png" alt="Ruby Games Logo" class="loader-logo" />
+          <IMG src="images/ruby games logo white.png" alt="Ruby Games Logo" class="loader-logo" />
         </div>
         <div class="loader__label"><i>LOADING....</i></div>
       </div>
@@ -54,7 +54,7 @@
     <div class="container">
       <!-- Logo / Brand -->
       <a class="navbar-brand" href="index.html">
-        <img src="Assets/IMG/ruby games logo white.png" alt="Ruby Games Logo" class="site-logo">
+        <img src="images/ruby games logo white.png" alt="Ruby Games Logo" class="site-logo">
         RUBY <span class="text-ruby">GAMES</span>
       </a>
 
@@ -90,22 +90,22 @@
       <!-- Main news card -->
       <div class="hero card">
         <h2 class="section-title">Featured <span class="ruby-text">Story</span></h2>
-        <h3>PlaceHolder Title</h3>
-        <p>PlaceHolder content for the featured story.</p>
+        <h3>Ruby Games Opens Its 2026 Competitive Season</h3>
+        <p>Meet the squads, training programme and community events shaping our biggest season yet.</p>
         <br>
-        <a href="News_Article/PlaceHolder_News.html" class="btn btn-primary">Read News</a>
+        <a href="News_Article/season-opening.html" class="btn btn-primary">Read News</a>
       </div>
 
       <!-- Editor pick card -->
       <div class="hero card">
         <h2 class="section-title">Editor <span class="ruby-text">Pick</span></h2>
         <div class="editor-pick-media">
-          <video class="editor-video" controls preload="metadata" poster="Assets/IMG/profile pic.png">
-            <source src="Assets/IMG/Year 1 Sem 1.mp4" type="video/mp4" />
+          <video class="editor-video" controls preload="metadata" poster="images/profile pic.png">
+            <source src="images/Year 1 Sem 1 - Compressed with FlexClip.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
-        <p>PlaceHolder content for the editor pick.</p>
+        <p>Watch the club's Year 1 Semester 1 journey, featuring the people and moments behind Ruby Games.</p>
       </div>
 
     </div>
@@ -120,54 +120,58 @@
 
       <!-- Filter buttons controlled by JavaScript -->
       <div class="filter-buttons">
-        <button class="btn" data-filter="all">All</button>
-        <button class="btn" data-filter="tournament">Tournament</button>
-        <button class="btn" data-filter="players">Players</button>
-        <button class="btn" data-filter="workshop">Workshop</button>
+        <button class="btn active" type="button" data-filter="all" aria-pressed="true">All</button>
+        <button class="btn" type="button" data-filter="tournament" aria-pressed="false">Tournament</button>
+        <button class="btn" type="button" data-filter="players" aria-pressed="false">Players</button>
+        <button class="btn" type="button" data-filter="workshop" aria-pressed="false">Workshop</button>
       </div>
 
       <!-- News list -->
       <div class="news-list">
 
         <div class="card news-item" data-category="tournament">
-          <a class="news-link" href="News_Article/PlaceHolder_News.html">
+          <a class="news-link" href="News_Article/season-opening.html">
           <div class="news-number"></div>
           <div>
-            <h3>PlaceHolder Title</h3>
-            <p>PlaceHolder content for the featured story.</p>
+            <p class="ruby-text"><strong>TOURNAMENT · 12 AUG 2026</strong></p>
+            <h3>Registration Opens for the Ruby Campus Championship</h3>
+            <p>Build your team and prepare to compete across our featured esports titles.</p>
           </div>
           <div class="overlay"><span>Read the latest story</span></div>
           </a>
         </div>
 
         <div class="card news-item" data-category="players">
-          <a class="news-link" href="News_Article/PlaceHolder_News.html">
+          <a class="news-link" href="teams.html">
           <div class="news-number"></div>
           <div>
-            <h3>PlaceHolder Title</h3>
-            <p>PlaceHolder content for the featured story.</p>
+            <p class="ruby-text"><strong>PLAYERS · 8 AUG 2026</strong></p>
+            <h3>Meet the Players Representing Ruby Games</h3>
+            <p>Discover the roles, strengths and competitive backgrounds of our club roster.</p>
           </div>
           <div class="overlay"><span>Read the latest story</span></div>
           </a>
         </div>
 
         <div class="card news-item" data-category="workshop">
-          <a class="news-link" href="News_Article/PlaceHolder_News.html">
+          <a class="news-link" href="booking.html">
           <div class="news-number"></div>
           <div>
-            <h3>PlaceHolder Title</h3>
-            <p>PlaceHolder content for the featured story.</p>
+            <p class="ruby-text"><strong>WORKSHOP · 3 AUG 2026</strong></p>
+            <h3>Training Room Sessions Now Available</h3>
+            <p>Reserve a gaming room for coaching, strategy reviews and team practice.</p>
           </div>
           <div class="overlay"><span>Read the latest story</span></div>
           </a>
         </div>
 
         <div class="card news-item" data-category="tournament">
-          <a class="news-link" href="News_Article/PlaceHolder_News.html">
+          <a class="news-link" href="tournaments.html">
           <div class="news-number"></div>
           <div>
-            <h3>PlaceHolder Title</h3>
-            <p>PlaceHolder content for the featured story.</p>
+            <p class="ruby-text"><strong>TOURNAMENT · 28 JUL 2026</strong></p>
+            <h3>New Tournament Hub Goes Live</h3>
+            <p>View schedules, brackets and match reminders from one central competition hub.</p>
           </div>
           <div class="overlay"><span>Read the latest story</span></div>
           </a>
@@ -181,13 +185,13 @@
 <!-- ================= FOOTER ================= -->
   <footer class="footer">
     <div class="container">
-      <img src="Assets/IMG/ruby games logo white.png" alt="Ruby Games Logo" class="footer-logo" />
+      <img src="images/ruby games logo white.png" alt="Ruby Games Logo" class="footer-logo" />
       <p>This website is owned and operated by Ruby Games. © 2026 Ruby Games. All rights reserved.</p>
     </div>
   </footer>
 </main>
-<script src="Assets/JS/App.js"></script>
-<script src="Assets/JS/loading.js"></script>
-<script src="Assets/JS/Navbar.js"></script>
+<script src="js/App.js"></script>
+<script src="js/loading.js"></script>
+<script src="js/site-header.js"></script>
 </body>
 </html>

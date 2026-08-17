@@ -3,6 +3,19 @@
   const scriptSource = currentScript ? currentScript.getAttribute('src') || '' : '';
   const rootPrefix = scriptSource.startsWith('../') ? '../' : '';
 
+  const pageHistoryKey = 'rubyPageHistory';
+  const backNavigationKey = 'rubyBackNavigation';
+  const currentPage = window.location.pathname + window.location.search;
+  let pageHistory;
+  try { pageHistory = JSON.parse(sessionStorage.getItem(pageHistoryKey) || '[]'); }
+  catch (error) { pageHistory = []; }
+  if (sessionStorage.getItem(backNavigationKey) === 'true') {
+    sessionStorage.removeItem(backNavigationKey);
+  } else if (pageHistory[pageHistory.length - 1] !== currentPage) {
+    pageHistory.push(currentPage);
+    sessionStorage.setItem(pageHistoryKey, JSON.stringify(pageHistory.slice(-30)));
+  }
+
   const pages = [
     ['index.html', 'HOME'],
     ['News_2.html', 'NEWS'],

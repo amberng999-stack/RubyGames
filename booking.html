@@ -1,456 +1,922 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Book a Room | Ruby Games</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-  integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"
-  onerror="document.getElementById('cdnWarning').style.display='block'">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/page-loader.css">
-<style>
-:root{--font-primary:Impact,sans-serif;--font-secondary:'Segoe UI',Roboto,Arial,sans-serif;--black:#000;--ruby:#9B111E;--grey:#1a1a1a;}
-html,body{overflow-x:hidden;width:100%;max-width:100vw;}
-body{background:var(--black)!important;color:#fff;font-family:var(--font-secondary);padding-top:70px;}
-h1,h4,h5,.brand,.btn-ruby,.navbar-brand{font-family:var(--font-primary);}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Book a Room | Ruby Games</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"
+    onerror="document.getElementById('cdnWarning').style.display='block'">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/page-loader.css">
+  <style>
+    :root {
+      --font-primary: Impact, sans-serif;
+      --font-secondary: 'Segoe UI', Roboto, Arial, sans-serif;
+      --black: #000;
+      --ruby: #9B111E;
+      --grey: #1a1a1a;
+    }
 
-/*Nav bar*/
-.navbar-ruby{background:var(--black)!important;border-bottom:3px solid var(--ruby);}
-.navbar-ruby .navbar-brand{color:var(--ruby)!important;}
-.navbar-ruby .navbar-brand span{color:#fff;}
-.navbar-ruby .nav-link{color:#fff!important;min-height:44px;display:flex;align-items:center;}
-.navbar-ruby .nav-link:hover{color:var(--ruby)!important;}
-.navbar-ruby .nav-link.active{background:var(--ruby);border-radius:4px;color:#fff!important;}
-.navbar-toggler{border-color:var(--ruby)!important;}
-.navbar-toggler-icon{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb(155,17,30)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")!important;}
+    html,
+    body {
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100vw;
+    }
 
-/*  Picture Section */
-.hero{text-align:center;padding:90px 20px 40px;}
-.hero span{color:var(--ruby);}
-.points-bar{background:var(--grey);border:1px solid var(--ruby);border-radius:8px;padding:15px 25px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
-.points-bar b{color:var(--ruby);font-size:1.5rem;}
-.btn-ruby{background:var(--ruby);color:#fff;border:none;padding:10px 22px;text-transform:uppercase;border-radius:6px;text-decoration:none;cursor:pointer;min-height:44px;}
-.lighter-button-label{font-family:var(--font-secondary);font-weight:500;letter-spacing:.02em;}
+    body {
+      background: var(--black) !important;
+      color: #fff;
+      font-family: var(--font-secondary);
+      padding-top: 70px;
+    }
 
-/*Room Selection Tabs*/
-.room-tab{background:var(--grey);border:2px solid #444;border-radius:10px;padding:16px;text-align:center;cursor:pointer;transition:.25s;height:100%;}
-.room-tab h5{margin:0 0 4px;text-transform:uppercase;}
-.room-tab p{margin:0;font-size:.8rem;color:#aaa;}
-.room-tab .cost{font-size:.75rem;color:#ffb347;margin-top:6px;}
-.room-tab:hover{border-color:var(--ruby);}
-.room-tab.active{border-color:var(--ruby);background:rgba(155,17,30,.18);box-shadow:0 0 18px rgba(155,17,30,.6);}
+    h1,
+    h4,
+    h5,
+    .brand,
+    .btn-ruby,
+    .navbar-brand {
+      font-family: var(--font-primary);
+    }
 
-/*Booking Calendar & Layout*/
-.booking-wrapper{display:none;}
-.booking-wrapper.visible{display:block;}
-.cal-box,.slots-box,.booking-step{background:var(--grey);border:1px solid #333;border-radius:10px;padding:20px;}
-.booking-step{border-left:5px solid var(--ruby);margin-top:25px;}
-.cal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px;}
-.cal-header h4{color:var(--ruby);margin:0;text-transform:uppercase;font-size:1.1rem;}
-.cal-nav-btn{background:transparent;border:1px solid var(--ruby);color:var(--ruby);width:40px;height:40px;border-radius:50%;cursor:pointer;min-width:44px;min-height:44px;}
-.cal-nav-btn:hover{background:var(--ruby);color:#fff;}
-.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center;}
-.cal-day-label{font-size:.7rem;color:#888;font-weight:700;padding-bottom:6px;}
-.cal-day{aspect-ratio:1/1;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:8px;cursor:pointer;font-size:clamp(.7rem,2vw,.9rem);background:#0d0d0d;border:1px solid #262626;transition:.2s;}
-.cal-day.empty{visibility:hidden;cursor:default;}
-.cal-day.past{opacity:.3;cursor:not-allowed;}
-.cal-day:not(.empty):not(.past):hover{border-color:var(--ruby);background:rgba(155,17,30,.15);}
-.cal-day.today{border-color:#666;font-weight:700;}
-.cal-day.selected{background:var(--ruby)!important;border-color:var(--ruby);color:#fff;box-shadow:0 0 15px var(--ruby);}
-.cal-day .dot{width:5px;height:5px;border-radius:50%;background:#ffb347;margin-top:2px;}
+    /*Nav bar*/
+    .navbar-ruby {
+      background: var(--black) !important;
+      border-bottom: 3px solid var(--ruby);
+    }
 
-/*Selection for Time Slot */
-.slots-box h4{color:var(--ruby);margin-bottom:15px;text-transform:uppercase;font-size:1.1rem;}
-.slots-list{display:flex;flex-direction:column;gap:10px;max-height:400px;overflow-y:auto;-webkit-overflow-scrolling:touch;}
-.slot-btn{background:#0d0d0d;border:1px solid #444;color:#fff;border-radius:8px;padding:12px 14px;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;width:100%;min-height:44px;}
-.slot-btn:hover:not(:disabled){border-color:var(--ruby);box-shadow:0 0 10px rgba(155,17,30,.5);}
-.slot-btn.selected{background:var(--ruby);border-color:var(--ruby);}
-.slot-btn:disabled{opacity:.35;cursor:not-allowed;}
+    .navbar-ruby .navbar-brand {
+      color: var(--ruby) !important;
+    }
+
+    .navbar-ruby .navbar-brand span {
+      color: #fff;
+    }
+
+    .navbar-ruby .nav-link {
+      color: #fff !important;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-ruby .nav-link:hover {
+      color: var(--ruby) !important;
+    }
+
+    .navbar-ruby .nav-link.active {
+      background: var(--ruby);
+      border-radius: 4px;
+      color: #fff !important;
+    }
+
+    .navbar-toggler {
+      border-color: var(--ruby) !important;
+    }
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb(155,17,30)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+    }
+
+    /*  Picture Section */
+    .hero {
+      text-align: center;
+      padding: 90px 20px 40px;
+    }
+
+    .hero span {
+      color: var(--ruby);
+    }
+
+    .points-bar {
+      background: var(--grey);
+      border: 1px solid var(--ruby);
+      border-radius: 8px;
+      padding: 15px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .points-bar b {
+      color: var(--ruby);
+      font-size: 1.5rem;
+    }
+
+    .btn-ruby {
+      background: var(--ruby);
+      color: #fff;
+      border: none;
+      padding: 10px 22px;
+      text-transform: uppercase;
+      border-radius: 6px;
+      text-decoration: none;
+      cursor: pointer;
+      min-height: 44px;
+    }
+
+    .lighter-button-label {
+      font-family: var(--font-secondary);
+      font-weight: 500;
+      letter-spacing: .02em;
+    }
+
+    /*Room Selection Tabs*/
+    .room-tab {
+      background: var(--grey);
+      border: 2px solid #444;
+      border-radius: 10px;
+      padding: 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: .25s;
+      height: 100%;
+    }
+
+    .room-tab h5 {
+      margin: 0 0 4px;
+      text-transform: uppercase;
+    }
+
+    .room-tab p {
+      margin: 0;
+      font-size: .8rem;
+      color: #aaa;
+    }
+
+    .room-tab .cost {
+      font-size: .75rem;
+      color: #ffb347;
+      margin-top: 6px;
+    }
+
+    .room-tab:hover {
+      border-color: var(--ruby);
+    }
+
+    .room-tab.active {
+      border-color: var(--ruby);
+      background: rgba(155, 17, 30, .18);
+      box-shadow: 0 0 18px rgba(155, 17, 30, .6);
+    }
+
+    /*Booking Calendar & Layout*/
+    .booking-wrapper {
+      display: none;
+    }
+
+    .booking-wrapper.visible {
+      display: block;
+    }
+
+    .cal-box,
+    .slots-box,
+    .booking-step {
+      background: var(--grey);
+      border: 1px solid #333;
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .booking-step {
+      border-left: 5px solid var(--ruby);
+      margin-top: 25px;
+    }
+
+    .cal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .cal-header h4 {
+      color: var(--ruby);
+      margin: 0;
+      text-transform: uppercase;
+      font-size: 1.1rem;
+    }
+
+    .cal-nav-btn {
+      background: transparent;
+      border: 1px solid var(--ruby);
+      color: var(--ruby);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      min-width: 44px;
+      min-height: 44px;
+    }
+
+    .cal-nav-btn:hover {
+      background: var(--ruby);
+      color: #fff;
+    }
+
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+      text-align: center;
+    }
+
+    .cal-day-label {
+      font-size: .7rem;
+      color: #888;
+      font-weight: 700;
+      padding-bottom: 6px;
+    }
+
+    .cal-day {
+      aspect-ratio: 1/1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: clamp(.7rem, 2vw, .9rem);
+      background: #0d0d0d;
+      border: 1px solid #262626;
+      transition: .2s;
+    }
+
+    .cal-day.empty {
+      visibility: hidden;
+      cursor: default;
+    }
+
+    .cal-day.past {
+      opacity: .3;
+      cursor: not-allowed;
+    }
+
+    .cal-day:not(.empty):not(.past):hover {
+      border-color: var(--ruby);
+      background: rgba(155, 17, 30, .15);
+    }
+
+    .cal-day.today {
+      border-color: #666;
+      font-weight: 700;
+    }
+
+    .cal-day.selected {
+      background: var(--ruby) !important;
+      border-color: var(--ruby);
+      color: #fff;
+      box-shadow: 0 0 15px var(--ruby);
+    }
+
+    .cal-day .dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #ffb347;
+      margin-top: 2px;
+    }
+
+    /*Selection for Time Slot */
+    .slots-box h4 {
+      color: var(--ruby);
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      font-size: 1.1rem;
+    }
+
+    .slots-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-height: 400px;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .slot-btn {
+      background: #0d0d0d;
+      border: 1px solid #444;
+      color: #fff;
+      border-radius: 8px;
+      padding: 12px 14px;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      min-height: 44px;
+    }
+
+    .slot-btn:hover:not(:disabled) {
+      border-color: var(--ruby);
+      box-shadow: 0 0 10px rgba(155, 17, 30, .5);
+    }
+
+    .slot-btn.selected {
+      background: var(--ruby);
+      border-color: var(--ruby);
+    }
+
+    .slot-btn:disabled {
+      opacity: .35;
+      cursor: not-allowed;
+    }
 
 
-.badge-status{font-size:.68rem;padding:2px 8px;border-radius:10px;background:#333;}
-.badge-status.confirmed{background:#28a745;}
-.badge-status.pending{background:#ffc107;color:#000;}
-.slot-empty-msg{color:#777;text-align:center;padding:30px 0;}
-#selectedSummary{display:none;background:#0d0d0d;border:1px dashed var(--ruby);border-radius:8px;padding:14px;margin-bottom:18px;}
+    .badge-status {
+      font-size: .68rem;
+      padding: 2px 8px;
+      border-radius: 10px;
+      background: #333;
+    }
 
-/*Booking Form*/
-label{display:block;margin-bottom:6px;font-size:.9rem;color:#ccc;}
-input[type=text]{width:100%;background:#0d0d0d;border:1px solid #444;color:#fff;padding:10px;border-radius:6px;min-height:44px;}
-input[type=text]:focus{outline:none;border-color:var(--ruby);}
+    .badge-status.confirmed {
+      background: #28a745;
+    }
 
-/*Buttons*/
-.btn-outline-ruby{border:2px solid var(--ruby);color:var(--ruby);background:transparent;text-transform:uppercase;padding:10px 22px;border-radius:6px;cursor:pointer;font-family:var(--font-primary);min-height:44px;}
-.btn-outline-ruby:hover:not(:disabled){background:var(--ruby);color:#fff;}
-.btn-outline-ruby:disabled{opacity:.35;cursor:not-allowed;}
-table{width:100%;border-collapse:collapse;margin-top:10px;}
-th,td{border:1px solid #333;padding:8px 10px;text-align:left;font-size:.9rem;}
-th{color:var(--ruby);}
+    .badge-status.pending {
+      background: #ffc107;
+      color: #000;
+    }
 
-/* Badges of Status*/
-.badge{padding:3px 10px;border-radius:10px;font-size:.75rem;}
-.badge-success{background:#28a745;}
-.badge-warning{background:#ffc107;color:#000;}
-.table-responsive{-webkit-overflow-scrolling:touch;}
-.modal-content{background:var(--grey)!important;border:2px solid var(--ruby)!important;color:#fff;}
-.modal-header,.modal-footer{border-color:#333!important;}
-footer{background:#000;border-top:3px solid var(--ruby);text-align:center;padding:25px;color:#999;}
-#cdnWarning{display:none;background:#ffc107;color:#000;text-align:center;padding:12px;font-weight:700;}
+    .slot-empty-msg {
+      color: #777;
+      text-align: center;
+      padding: 30px 0;
+    }
 
-/*Responsive Design*/
-@media(max-width:768px){.calendar-panel{flex-direction:column;}}
+    #selectedSummary {
+      display: none;
+      background: #0d0d0d;
+      border: 1px dashed var(--ruby);
+      border-radius: 8px;
+      padding: 14px;
+      margin-bottom: 18px;
+    }
 
-/* Increase all Booking-page content type by exactly 2px. */
-.hero h1{font-size:calc(clamp(1.375rem,calc(1.375rem + 1.5vw),2.5rem) + 2px);}
-.hero p,.points-bar,.booking-wrapper,.calendar-section,.my-bookings,footer{font-size:calc(1rem + 2px);}
-.points-bar b{font-size:calc(1.5rem + 2px);}
-.room-tab h5{font-size:calc(1.25rem + 2px);}
-.room-tab p{font-size:calc(.8rem + 2px);}
-.room-tab .cost{font-size:calc(.75rem + 2px);}
-.cal-header h4,.slots-box h4{font-size:calc(1.1rem + 2px);}
-.cal-day-label{font-size:calc(.7rem + 2px);}
-.cal-day{font-size:calc(clamp(.7rem,2vw,.9rem) + 2px);}
-.badge-status{font-size:calc(.68rem + 2px);}
-.booking-wrapper label{font-size:calc(.9rem + 2px);}
-.booking-wrapper :is(input,select,textarea,button),.modal :is(input,button){font-size:calc(1rem + 2px);}
-.booking-wrapper :is(th,td),.my-bookings :is(th,td){font-size:calc(.9rem + 2px);}
-.booking-wrapper .badge,.my-bookings .badge{font-size:calc(.75rem + 2px);}
-.modal :is(h5,p,label,td,th){font-size:calc(1rem + 2px);}
-</style>
+    /*Booking Form*/
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: .9rem;
+      color: #ccc;
+    }
+
+    input[type=text] {
+      width: 100%;
+      background: #0d0d0d;
+      border: 1px solid #444;
+      color: #fff;
+      padding: 10px;
+      border-radius: 6px;
+      min-height: 44px;
+    }
+
+    input[type=text]:focus {
+      outline: none;
+      border-color: var(--ruby);
+    }
+
+    /*Buttons*/
+    .btn-outline-ruby {
+      border: 2px solid var(--ruby);
+      color: var(--ruby);
+      background: transparent;
+      text-transform: uppercase;
+      padding: 10px 22px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: var(--font-primary);
+      min-height: 44px;
+    }
+
+    .btn-outline-ruby:hover:not(:disabled) {
+      background: var(--ruby);
+      color: #fff;
+    }
+
+    .btn-outline-ruby:disabled {
+      opacity: .35;
+      cursor: not-allowed;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th,
+    td {
+      border: 1px solid #333;
+      padding: 8px 10px;
+      text-align: left;
+      font-size: .9rem;
+    }
+
+    th {
+      color: var(--ruby);
+    }
+
+    /* Badges of Status*/
+    .badge {
+      padding: 3px 10px;
+      border-radius: 10px;
+      font-size: .75rem;
+    }
+
+    .badge-success {
+      background: #28a745;
+    }
+
+    .badge-warning {
+      background: #ffc107;
+      color: #000;
+    }
+
+    .table-responsive {
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .modal-content {
+      background: var(--grey) !important;
+      border: 2px solid var(--ruby) !important;
+      color: #fff;
+    }
+
+    .modal-header,
+    .modal-footer {
+      border-color: #333 !important;
+    }
+
+    footer {
+      background: #000;
+      border-top: 3px solid var(--ruby);
+      text-align: center;
+      padding: 25px;
+      color: #999;
+    }
+
+    #cdnWarning {
+      display: none;
+      background: #ffc107;
+      color: #000;
+      text-align: center;
+      padding: 12px;
+      font-weight: 700;
+    }
+
+    /*Responsive Design*/
+    @media(max-width:768px) {
+      .calendar-panel {
+        flex-direction: column;
+      }
+    }
+
+    /* Increase all Booking-page content type by exactly 2px. */
+    .hero h1 {
+      font-size: calc(clamp(1.375rem, calc(1.375rem + 1.5vw), 2.5rem) + 2px);
+    }
+
+    .hero p,
+    .points-bar,
+    .booking-wrapper,
+    .calendar-section,
+    .my-bookings,
+    footer {
+      font-size: calc(1rem + 2px);
+    }
+
+    .points-bar b {
+      font-size: calc(1.5rem + 2px);
+    }
+
+    .room-tab h5 {
+      font-size: calc(1.25rem + 2px);
+    }
+
+    .room-tab p {
+      font-size: calc(.8rem + 2px);
+    }
+
+    .room-tab .cost {
+      font-size: calc(.75rem + 2px);
+    }
+
+    .cal-header h4,
+    .slots-box h4 {
+      font-size: calc(1.1rem + 2px);
+    }
+
+    .cal-day-label {
+      font-size: calc(.7rem + 2px);
+    }
+
+    .cal-day {
+      font-size: calc(clamp(.7rem, 2vw, .9rem) + 2px);
+    }
+
+    .badge-status {
+      font-size: calc(.68rem + 2px);
+    }
+
+    .booking-wrapper label {
+      font-size: calc(.9rem + 2px);
+    }
+
+    .booking-wrapper :is(input, select, textarea, button),
+    .modal :is(input, button) {
+      font-size: calc(1rem + 2px);
+    }
+
+    .booking-wrapper :is(th, td),
+    .my-bookings :is(th, td) {
+      font-size: calc(.9rem + 2px);
+    }
+
+    .booking-wrapper .badge,
+    .my-bookings .badge {
+      font-size: calc(.75rem + 2px);
+    }
+
+    .modal :is(h5, p, label, td, th) {
+      font-size: calc(1rem + 2px);
+    }
+  </style>
 </head>
+
 <body>
-<div class="loader" id="loader" aria-live="polite">
-  <div class="loader__inner">
-    <div class="loader__top"><div class="loader__logo"><img src="Assets/IMG/ruby games logo white.png" alt="Ruby Games Logo" class="loader-logo"></div><div class="loader__label"><i>LOADING....</i></div></div>
-    <div class="loader__line"><div class="loader__progress" id="progress"></div></div>
-    <div class="loader__meta"><span>CONNECTING TO BOOKING</span><span><b id="percent">0</b>%</span></div>
-  </div>
-  <div class="ticker" aria-hidden="true"><div class="ticker__track">LOADING &nbsp;&nbsp;&nbsp; LOADING &nbsp;&nbsp;&nbsp;</div></div>
-</div>
-
-<div id="cdnWarning">⚠️ Some styles failed to load. Please check your internet connection.</div>
-
-<nav class="navbar navbar-expand-lg navbar-dark navbar-ruby site-navbar fixed-top"><div class="container"><a class="navbar-brand" href="index.html">RUBY <span>GAMES</span></a><div class="navbar-nav ms-auto"><a class="nav-link" href="index.html">Home</a><a class="nav-link" href="News_2.html">News</a><a class="nav-link" href="tournaments.html">Tournaments</a><a class="nav-link" href="game.html">Games</a><a class="nav-link active" href="booking.html">Booking</a><a class="nav-link" href="teams.html">Teams</a><a class="nav-link" href="mission.html">Missions</a><a class="nav-link" href="shop.html">Shop</a><a class="nav-link" href="signin.html">Sign In</a></div></div></nav>
-
-<section class="hero">
-  <h1>BOOK A <span>GAMING ROOM</span></h1>
-  <p>Select a room, pick a date, then choose a time slot.</p>
-</section>
-
-<div class="container">
-  <div class="points-bar mb-4">
-    <div>💎 Your Member Points Balance: <b id="memberPoints">0</b> pts</div>
-    <a href="mission.html" class="btn-ruby lighter-button-label">Go to Missions to Earn Points →</a>
+  <div class="loader" id="loader" aria-live="polite">
+    <div class="loader__inner">
+      <div class="loader__top">
+        <div class="loader__logo"><img src="images/ruby games logo white.png" alt="Ruby Games Logo"
+            class="loader-logo"></div>
+        <div class="loader__label"><i>LOADING....</i></div>
+      </div>
+      <div class="loader__line">
+        <div class="loader__progress" id="progress"></div>
+      </div>
+      <div class="loader__meta"><span>CONNECTING TO BOOKING</span><span><b id="percent">0</b>%</span></div>
+    </div>
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker__track">LOADING &nbsp;&nbsp;&nbsp; LOADING &nbsp;&nbsp;&nbsp;</div>
+    </div>
   </div>
 
-  <div class="row g-3 mb-4" id="roomTabs"></div>
+  <div id="cdnWarning">⚠️ Some styles failed to load. Please check your internet connection.</div>
 
-  <div class="booking-wrapper" id="bookingWrapper">
-    <div class="row g-3">
-      <div class="col-12 col-lg-7">
-        <div class="cal-box">
-          <div class="cal-header">
-            <button class="cal-nav-btn" onclick="changeMonth(-1)">‹</button>
-            <h4 id="calMonthLabel">Month Year</h4>
-            <button class="cal-nav-btn" onclick="changeMonth(1)">›</button>
-          </div>
-          <div class="cal-grid" id="calGrid"></div>
-        </div>
-      </div>
-      <div class="col-12 col-lg-5">
-        <div class="slots-box">
-          <h4 id="slotsDateLabel">Select a Date</h4>
-          <div class="slots-list" id="slotsList"></div>
-        </div>
-      </div>
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-ruby site-navbar fixed-top">
+    <div class="container"><a class="navbar-brand" href="index.html">RUBY <span>GAMES</span></a>
+      <div class="navbar-nav ms-auto"><a class="nav-link" href="index.html">Home</a><a class="nav-link"
+          href="News_2.html">News</a><a class="nav-link" href="tournaments.html">Tournaments</a><a class="nav-link"
+          href="game.html">Games</a><a class="nav-link active" href="booking.html">Booking</a><a class="nav-link"
+          href="teams.html">Teams</a><a class="nav-link" href="mission.html">Missions</a><a class="nav-link"
+          href="shop.html">Shop</a><a class="nav-link" href="signin.html">Sign In</a></div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <h1>BOOK A <span>GAMING ROOM</span></h1>
+    <p>Select a room, pick a date, then choose a time slot.</p>
+  </section>
+
+  <div class="container">
+    <div class="points-bar mb-4">
+      <div>💎 Your Member Points Balance: <b id="memberPoints">0</b> pts</div>
+      <a href="mission.html" class="btn-ruby lighter-button-label">Go to Missions to Earn Points →</a>
     </div>
 
-    <div id="selectedSummary"></div>
+    <div class="row g-3 mb-4" id="roomTabs"></div>
 
-    <div class="booking-step">
-      <h5 style="color:var(--ruby);">Your Details</h5>
+    <div class="booking-wrapper" id="bookingWrapper">
       <div class="row g-3">
-        <div class="col-12 col-md-6"><label>Full Name *</label><input type="text" id="fullName" placeholder="Enter your full name"></div>
-        <div class="col-12 col-md-6"><label>Student ID</label><input type="text" id="studentId" placeholder="e.g. 23WMR12345"></div>
+        <div class="col-12 col-lg-7">
+          <div class="cal-box">
+            <div class="cal-header">
+              <button class="cal-nav-btn" onclick="changeMonth(-1)">‹</button>
+              <h4 id="calMonthLabel">Month Year</h4>
+              <button class="cal-nav-btn" onclick="changeMonth(1)">›</button>
+            </div>
+            <div class="cal-grid" id="calGrid"></div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-5">
+          <div class="slots-box">
+            <h4 id="slotsDateLabel">Select a Date</h4>
+            <div class="slots-list" id="slotsList"></div>
+          </div>
+        </div>
       </div>
-      <div class="form-check mt-3">
-        <input class="form-check-input" type="checkbox" id="rememberMe">
-        <label class="form-check-label" for="rememberMe">Remember my name (cookie)</label>
-      </div>
-      <div class="d-flex flex-wrap gap-3 mt-3">
-        <button class="btn-outline-ruby" id="btnBookFree" disabled onclick="createBooking('standard')">Book Now — FREE<br><small>(Pending approval)</small></button>
-        <button class="btn-outline-ruby" id="btnBookPriority" disabled onclick="createBooking('priority')">Book Now — Priority 🔥<br><small>(Use <span id="priorityCostLabel">--</span> pts, Instant)</small></button>
-      </div>
-     
-    </div>
 
-    <div class="booking-step">
-      <h5 style="color:var(--ruby);">📋 My Bookings (Evidence Records)</h5>
-      <div class="table-responsive">
-        <table>
-          <thead><tr><th>Booking No.</th><th>Name</th><th>Room</th><th>Date</th><th>Time</th><th>Type</th><th>Status</th></tr></thead>
-          <tbody id="bookingsTableBody"></tbody>
-        </table>
+      <div id="selectedSummary"></div>
+
+      <div class="booking-step">
+        <h5 style="color:var(--ruby);">Your Details</h5>
+        <div class="row g-3">
+          <div class="col-12 col-md-6"><label>Full Name *</label><input type="text" id="fullName"
+              placeholder="Enter your full name"></div>
+          <div class="col-12 col-md-6"><label>Student ID</label><input type="text" id="studentId"
+              placeholder="e.g. 23WMR12345"></div>
+        </div>
+        <div class="form-check mt-3">
+          <input class="form-check-input" type="checkbox" id="rememberMe">
+          <label class="form-check-label" for="rememberMe">Remember my name (cookie)</label>
+        </div>
+        <div class="d-flex flex-wrap gap-3 mt-3">
+          <button class="btn-outline-ruby" id="btnBookFree" disabled onclick="createBooking('standard')">Book Now —
+            FREE<br><small>(Pending approval)</small></button>
+          <button class="btn-outline-ruby" id="btnBookPriority" disabled onclick="createBooking('priority')">Book Now —
+            Priority 🔥<br><small>(Use <span id="priorityCostLabel">--</span> pts, Instant)</small></button>
+        </div>
+
+      </div>
+
+      <div class="booking-step">
+        <h5 style="color:var(--ruby);">📋 My Bookings (Evidence Records)</h5>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>Booking No.</th>
+                <th>Name</th>
+                <th>Room</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Type</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="bookingsTableBody"></tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- Bootstrap Modal -->
-<div class="modal fade" id="evidenceModal" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">✅ Booking Evidence</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body" id="evidenceBody"></div>
-      <div class="modal-footer">
-        <button class="btn-ruby" data-bs-dismiss="modal">Done</button>
+  <!-- Bootstrap Modal -->
+  <div class="modal fade" id="evidenceModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">✅ Booking Evidence</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body" id="evidenceBody"></div>
+        <div class="modal-footer">
+          <button class="btn-ruby" data-bs-dismiss="modal">Done</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<footer><p>&copy; 2026 Ruby Games Esports Club</p></footer>
+  <footer>
+    <p>&copy; 2026 Ruby Games Esports Club</p>
+  </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"
-  onerror="document.getElementById('cdnWarning').style.display='block';"></script>
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="js/storage.js"></script>
-<script src="js/main.js"></script>
-<script>
-window.addEventListener('DOMContentLoaded', function () {
-  const toggler = document.querySelector('.navbar-toggler');
-  const navMenu = document.getElementById('navMenu');
-  if (typeof bootstrap === 'undefined' && toggler && navMenu) {
-    toggler.addEventListener('click', () => navMenu.classList.toggle('show'));
-  }
-  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.nav-link').forEach(link => {
-    if (link.getAttribute('data-page') === currentPage) link.classList.add('active');
-  });
-});
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"
+    onerror="document.getElementById('cdnWarning').style.display='block';"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      const toggler = document.querySelector('.navbar-toggler');
+      const navMenu = document.getElementById('navMenu');
+      if (typeof bootstrap === 'undefined' && toggler && navMenu) {
+        toggler.addEventListener('click', () => navMenu.classList.toggle('show'));
+      }
+      const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+      document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.getAttribute('data-page') === currentPage) link.classList.add('active');
+      });
+    });
 
-function getMemberPoints(){const v=localStorage.getItem('memberPoints');return v===null?2500:parseInt(v);}
-function setMemberPoints(v){localStorage.setItem('memberPoints',v);document.getElementById('memberPoints').textContent=v;}
-function addMemberPoints(a){setMemberPoints(getMemberPoints()+a);}
-function deductMemberPoints(a){const b=getMemberPoints();if(b>=a){setMemberPoints(b-a);return true;}return false;}
+    function getMemberPoints() { const v = localStorage.getItem('memberPoints'); return v === null ? 2500 : parseInt(v); }
+    function setMemberPoints(v) { localStorage.setItem('memberPoints', v); document.getElementById('memberPoints').textContent = v; }
+    function addMemberPoints(a) { setMemberPoints(getMemberPoints() + a); }
+    function deductMemberPoints(a) { const b = getMemberPoints(); if (b >= a) { setMemberPoints(b - a); return true; } return false; }
 
-const rooms=[
-  {id:'roomA',name:'Practice Room A',capacity:'5 Gaming PCs',priorityCost:500,allowFree:true},
-  {id:'roomB',name:'Practice Room B',capacity:'5 Gaming PCs',priorityCost:500,allowFree:true},
+    const rooms = [
+      { id: 'roomA', name: 'Practice Room A', capacity: '5 Gaming PCs', priorityCost: 500, allowFree: true },
+      { id: 'roomB', name: 'Practice Room B', capacity: '5 Gaming PCs', priorityCost: 500, allowFree: true },
 
-];
-const timeSlots=["09:00 - 10:00","10:00 - 11:00","11:00 - 12:00","12:00 - 13:00","14:00 - 15:00","15:00 - 16:00","16:00 - 17:00","17:00 - 18:00","18:00 - 19:00","19:00 - 20:00","20:00 - 21:00"];
-const AUTO_APPROVE_WAIT_MS=20000;
-const dayLabels=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
-let state={room:null,viewYear:new Date().getFullYear(),viewMonth:new Date().getMonth(),selectedDate:null,selectedTime:null};
+    ];
+    const timeSlots = ["09:00 - 10:00", "10:00 - 11:00", "11:00 - 12:00", "12:00 - 13:00", "14:00 - 15:00", "15:00 - 16:00", "16:00 - 17:00", "17:00 - 18:00", "18:00 - 19:00", "19:00 - 20:00", "20:00 - 21:00"];
+    const AUTO_APPROVE_WAIT_MS = 20000;
+    const dayLabels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    let state = { room: null, viewYear: new Date().getFullYear(), viewMonth: new Date().getMonth(), selectedDate: null, selectedTime: null };
 
-function getBookings(){return JSON.parse(localStorage.getItem('rubyBookings'))||[];}
-function saveBookings(arr){localStorage.setItem('rubyBookings',JSON.stringify(arr));}
-function generateBookingId(){return 'RG-'+Date.now().toString().slice(-6)+Math.floor(Math.random()*90+10);}
-function pad(n){return n.toString().padStart(2,'0');}
-function toDateStr(y,m,d){return `${y}-${pad(m+1)}-${pad(d)}`;}
-function todayStr(){const t=new Date();return toDateStr(t.getFullYear(),t.getMonth(),t.getDate());}
+    function getBookings() { return JSON.parse(localStorage.getItem('rubyBookings')) || []; }
+    function saveBookings(arr) { localStorage.setItem('rubyBookings', JSON.stringify(arr)); }
+    function generateBookingId() { return 'RG-' + Date.now().toString().slice(-6) + Math.floor(Math.random() * 90 + 10); }
+    function pad(n) { return n.toString().padStart(2, '0'); }
+    function toDateStr(y, m, d) { return `${y}-${pad(m + 1)}-${pad(d)}`; }
+    function todayStr() { const t = new Date(); return toDateStr(t.getFullYear(), t.getMonth(), t.getDate()); }
 
-function renderRoomTabs(){
-  const wrap=document.getElementById('roomTabs');
-  wrap.innerHTML=rooms.map(r=>`
+    function renderRoomTabs() {
+      const wrap = document.getElementById('roomTabs');
+      wrap.innerHTML = rooms.map(r => `
     <div class="col-12 col-md-4">
       <div class="room-tab" data-room="${r.id}" onclick="selectRoom('${r.id}')">
         <h5>${r.name}</h5><p>${r.capacity}</p>
-        <div class="cost"> ${r.priorityCost} pts = Priority ${r.allowFree?'':'(Priority Only)'}</div>
+        <div class="cost"> ${r.priorityCost} pts = Priority ${r.allowFree ? '' : '(Priority Only)'}</div>
       </div>
     </div>`).join('');
-}
-function selectRoom(roomId){
-  state.room=rooms.find(r=>r.id===roomId);
-  state.selectedDate=null; state.selectedTime=null;
-  document.querySelectorAll('.room-tab').forEach(el=>el.classList.remove('active'));
-  document.querySelector(`.room-tab[data-room="${roomId}"]`).classList.add('active');
-  document.getElementById('bookingWrapper').classList.add('visible');
-  renderCalendar(); renderTimeSlots(); updateBookButtonsState();
-  document.getElementById('selectedSummary').style.display='none';
-}
-function renderCalendar(){
-  const y=state.viewYear, m=state.viewMonth;
-  const monthNames=["January","February","March","April","May","June","July","August","September","October","November","December"];
-  document.getElementById('calMonthLabel').textContent=`${monthNames[m]} ${y}`;
-  const firstDay=new Date(y,m,1);
-  let startWeekday=firstDay.getDay();
-  startWeekday=(startWeekday===0)?6:startWeekday-1;
-  const daysInMonth=new Date(y,m+1,0).getDate();
-  const bookings=getBookings();
-  const today=todayStr();
-  let html=dayLabels.map(d=>`<div class="cal-day-label">${d}</div>`).join('');
-  for(let i=0;i<startWeekday;i++) html+=`<div class="cal-day empty"></div>`;
-  for(let d=1;d<=daysInMonth;d++){
-    const dateStr=toDateStr(y,m,d);
-    const isPast=dateStr<today, isToday=dateStr===today, isSelected=dateStr===state.selectedDate;
-    const hasBooking=state.room && bookings.some(b=>b.roomId===state.room.id && b.date===dateStr);
-    let cls='cal-day';
-    if(isPast) cls+=' past'; if(isToday) cls+=' today'; if(isSelected) cls+=' selected';
-    html+=`<div class="${cls}" ${isPast?'':`onclick="pickDate('${dateStr}')"`}>${d}${hasBooking?'<span class="dot"></span>':''}</div>`;
-  }
-  document.getElementById('calGrid').innerHTML=html;
-}
-function pickDate(dateStr){
-  state.selectedDate=dateStr; state.selectedTime=null;
-  renderCalendar(); renderTimeSlots(); updateBookButtonsState();
-  document.getElementById('selectedSummary').style.display='none';
-}
-function changeMonth(delta){
-  state.viewMonth+=delta;
-  if(state.viewMonth>11){state.viewMonth=0;state.viewYear++;}
-  if(state.viewMonth<0){state.viewMonth=11;state.viewYear--;}
-  renderCalendar();
-}
-function renderTimeSlots(){
-  const list=document.getElementById('slotsList');
-  const label=document.getElementById('slotsDateLabel');
-  if(!state.room){list.innerHTML='<p class="slot-empty-msg">👉 Select a room above first.</p>';label.textContent='';return;}
-  if(!state.selectedDate){list.innerHTML='<p class="slot-empty-msg">📅 Select a date from the calendar.</p>';label.textContent='';return;}
-  label.textContent=new Date(state.selectedDate).toDateString();
-  const bookings=getBookings();
-  list.innerHTML=timeSlots.map(time=>{
-    const existing=bookings.find(b=>b.roomId===state.room.id && b.date===state.selectedDate && b.time===time);
-    const isSelected=state.selectedTime===time;
-    const disabled=!!existing;
-    let statusBadge='';
-    if(existing) statusBadge=existing.status==='Confirmed'?'<span class="badge-status confirmed">Booked</span>':'<span class="badge-status pending">Pending</span>';
-    return `<button class="slot-btn ${isSelected?'selected':''}" ${disabled?'disabled':''} onclick="pickTime('${time}')"><span>${time}</span>${statusBadge}</button>`;
-  }).join('');
-}
-function pickTime(time){
-  state.selectedTime=time;
-  renderTimeSlots();
-  document.getElementById('selectedSummary').style.display='block';
-  document.getElementById('selectedSummary').innerHTML=`<strong>📌 Selected Booking:</strong><br>Room: <b>${state.room.name}</b><br>Date: <b>${new Date(state.selectedDate).toDateString()}</b> &nbsp; Time: <b>${time}</b>`;
-  updateBookButtonsState();
-}
-function updateBookButtonsState(){
-  const name=document.getElementById('fullName').value.trim();
-  const ready=state.room && state.selectedDate && state.selectedTime && name.length>0;
-  const points=getMemberPoints();
-  document.getElementById('btnBookFree').disabled=!(ready && state.room && state.room.allowFree);
-  document.getElementById('btnBookPriority').disabled=!(ready && state.room && points>=state.room.priorityCost);
-  if(state.room){
-    document.getElementById('priorityCostLabel').textContent=state.room.priorityCost;
-    document.getElementById('freeNotAvailableNote').style.display=state.room.allowFree?'none':'block';
-  }
-}
-document.getElementById('fullName').addEventListener('input',updateBookButtonsState);
-document.getElementById('studentId').addEventListener('input',updateBookButtonsState);
-
-function createBooking(type){
-  const name=document.getElementById('fullName').value.trim();
-  const studentId=document.getElementById('studentId').value.trim();
-  if(!state.room||!state.selectedDate||!state.selectedTime||!name) return;
-  if(!sessionStorage.getItem('username')){
-    sessionStorage.setItem('rubyPendingAction',JSON.stringify({
-      type:'createBooking',bookingType:type,roomId:state.room.id,date:state.selectedDate,time:state.selectedTime,
-      name,studentId,rememberName:document.getElementById('rememberMe').checked,
-      returnUrl:window.location.pathname+window.location.search
-    }));
-    window.location.href='signin.html';
-    return;
-  }
-  if(document.getElementById('rememberMe').checked) setCookie('rubyUserName',name,30);
-  let status='Pending';
-  if(type==='priority'){
-    if(!deductMemberPoints(state.room.priorityCost)){
-      alert('❌ Not enough Member Points! Complete some missions to earn more — redirecting you to Missions...');
-      window.location.href='mission.html';
-      return;
     }
-    status='Confirmed';
-  }
-  const booking={
-    id:generateBookingId(), name, studentId,
-    roomId:state.room.id, roomName:state.room.name,
-    date:state.selectedDate, time:state.selectedTime,
-    type: type==='priority'?`Priority (${state.room.priorityCost} pts)`:'Standard (Free)',
-    status, createdAt:Date.now(),
-    autoApproveAt: type==='priority'?Date.now():Date.now()+AUTO_APPROVE_WAIT_MS
-  };
+    function selectRoom(roomId) {
+      state.room = rooms.find(r => r.id === roomId);
+      state.selectedDate = null; state.selectedTime = null;
+      document.querySelectorAll('.room-tab').forEach(el => el.classList.remove('active'));
+      document.querySelector(`.room-tab[data-room="${roomId}"]`).classList.add('active');
+      document.getElementById('bookingWrapper').classList.add('visible');
+      renderCalendar(); renderTimeSlots(); updateBookButtonsState();
+      document.getElementById('selectedSummary').style.display = 'none';
+    }
+    function renderCalendar() {
+      const y = state.viewYear, m = state.viewMonth;
+      const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      document.getElementById('calMonthLabel').textContent = `${monthNames[m]} ${y}`;
+      const firstDay = new Date(y, m, 1);
+      let startWeekday = firstDay.getDay();
+      startWeekday = (startWeekday === 0) ? 6 : startWeekday - 1;
+      const daysInMonth = new Date(y, m + 1, 0).getDate();
+      const bookings = getBookings();
+      const today = todayStr();
+      let html = dayLabels.map(d => `<div class="cal-day-label">${d}</div>`).join('');
+      for (let i = 0; i < startWeekday; i++) html += `<div class="cal-day empty"></div>`;
+      for (let d = 1; d <= daysInMonth; d++) {
+        const dateStr = toDateStr(y, m, d);
+        const isPast = dateStr < today, isToday = dateStr === today, isSelected = dateStr === state.selectedDate;
+        const hasBooking = state.room && bookings.some(b => b.roomId === state.room.id && b.date === dateStr);
+        let cls = 'cal-day';
+        if (isPast) cls += ' past'; if (isToday) cls += ' today'; if (isSelected) cls += ' selected';
+        html += `<div class="${cls}" ${isPast ? '' : `onclick="pickDate('${dateStr}')"`}>${d}${hasBooking ? '<span class="dot"></span>' : ''}</div>`;
+      }
+      document.getElementById('calGrid').innerHTML = html;
+    }
+    function pickDate(dateStr) {
+      state.selectedDate = dateStr; state.selectedTime = null;
+      renderCalendar(); renderTimeSlots(); updateBookButtonsState();
+      document.getElementById('selectedSummary').style.display = 'none';
+    }
+    function changeMonth(delta) {
+      state.viewMonth += delta;
+      if (state.viewMonth > 11) { state.viewMonth = 0; state.viewYear++; }
+      if (state.viewMonth < 0) { state.viewMonth = 11; state.viewYear--; }
+      renderCalendar();
+    }
+    function renderTimeSlots() {
+      const list = document.getElementById('slotsList');
+      const label = document.getElementById('slotsDateLabel');
+      if (!state.room) { list.innerHTML = '<p class="slot-empty-msg">👉 Select a room above first.</p>'; label.textContent = ''; return; }
+      if (!state.selectedDate) { list.innerHTML = '<p class="slot-empty-msg">📅 Select a date from the calendar.</p>'; label.textContent = ''; return; }
+      label.textContent = new Date(state.selectedDate).toDateString();
+      const bookings = getBookings();
+      list.innerHTML = timeSlots.map(time => {
+        const existing = bookings.find(b => b.roomId === state.room.id && b.date === state.selectedDate && b.time === time);
+        const isSelected = state.selectedTime === time;
+        const disabled = !!existing;
+        let statusBadge = '';
+        if (existing) statusBadge = existing.status === 'Confirmed' ? '<span class="badge-status confirmed">Booked</span>' : '<span class="badge-status pending">Pending</span>';
+        return `<button class="slot-btn ${isSelected ? 'selected' : ''}" ${disabled ? 'disabled' : ''} onclick="pickTime('${time}')"><span>${time}</span>${statusBadge}</button>`;
+      }).join('');
+    }
+    function pickTime(time) {
+      state.selectedTime = time;
+      renderTimeSlots();
+      document.getElementById('selectedSummary').style.display = 'block';
+      document.getElementById('selectedSummary').innerHTML = `<strong>📌 Selected Booking:</strong><br>Room: <b>${state.room.name}</b><br>Date: <b>${new Date(state.selectedDate).toDateString()}</b> &nbsp; Time: <b>${time}</b>`;
+      updateBookButtonsState();
+    }
+    function updateBookButtonsState() {
+      const name = document.getElementById('fullName').value.trim();
+      const ready = state.room && state.selectedDate && state.selectedTime && name.length > 0;
+      const points = getMemberPoints();
+      document.getElementById('btnBookFree').disabled = !(ready && state.room && state.room.allowFree);
+      document.getElementById('btnBookPriority').disabled = !(ready && state.room && points >= state.room.priorityCost);
+      if (state.room) {
+        document.getElementById('priorityCostLabel').textContent = state.room.priorityCost;
+        document.getElementById('freeNotAvailableNote').style.display = state.room.allowFree ? 'none' : 'block';
+      }
+    }
+    document.getElementById('fullName').addEventListener('input', updateBookButtonsState);
+    document.getElementById('studentId').addEventListener('input', updateBookButtonsState);
 
-  const bookings=getBookings(); bookings.push(booking); saveBookings(bookings);
-  showEvidence(booking);
-  renderCalendar(); renderTimeSlots(); renderMyBookings();
-  state.selectedTime=null;
-  document.getElementById('selectedSummary').style.display='none';
-  updateBookButtonsState();
-}
+    function createBooking(type) {
+      const name = document.getElementById('fullName').value.trim();
+      const studentId = document.getElementById('studentId').value.trim();
+      if (!state.room || !state.selectedDate || !state.selectedTime || !name) return;
+      if (!sessionStorage.getItem('username')) {
+        sessionStorage.setItem('rubyPendingAction', JSON.stringify({
+          type: 'createBooking', bookingType: type, roomId: state.room.id, date: state.selectedDate, time: state.selectedTime,
+          name, studentId, rememberName: document.getElementById('rememberMe').checked,
+          returnUrl: window.location.pathname + window.location.search
+        }));
+        window.location.href = 'signin.html';
+        return;
+      }
+      if (document.getElementById('rememberMe').checked) setCookie('rubyUserName', name, 30);
+      let status = 'Pending';
+      if (type === 'priority') {
+        if (!deductMemberPoints(state.room.priorityCost)) {
+          alert('❌ Not enough Member Points! Complete some missions to earn more — redirecting you to Missions...');
+          window.location.href = 'mission.html';
+          return;
+        }
+        status = 'Confirmed';
+      }
+      const booking = {
+        id: generateBookingId(), name, studentId,
+        roomId: state.room.id, roomName: state.room.name,
+        date: state.selectedDate, time: state.selectedTime,
+        type: type === 'priority' ? `Priority (${state.room.priorityCost} pts)` : 'Standard (Free)',
+        status, createdAt: Date.now(),
+        autoApproveAt: type === 'priority' ? Date.now() : Date.now() + AUTO_APPROVE_WAIT_MS
+      };
 
-function showEvidence(b){
-  const badgeClass=b.status==='Confirmed'?'badge-success':'badge-warning';
-  document.getElementById('evidenceBody').innerHTML=`
+      const bookings = getBookings(); bookings.push(booking); saveBookings(bookings);
+      showEvidence(booking);
+      renderCalendar(); renderTimeSlots(); renderMyBookings();
+      state.selectedTime = null;
+      document.getElementById('selectedSummary').style.display = 'none';
+      updateBookButtonsState();
+    }
+
+    function showEvidence(b) {
+      const badgeClass = b.status === 'Confirmed' ? 'badge-success' : 'badge-warning';
+      document.getElementById('evidenceBody').innerHTML = `
     <table>
       <tr><th>Booking No.</th><td><b>${b.id}</b></td></tr>
       <tr><th>Name</th><td>${b.name}</td></tr>
-      <tr><th>Student ID</th><td>${b.studentId||'-'}</td></tr>
+      <tr><th>Student ID</th><td>${b.studentId || '-'}</td></tr>
       <tr><th>Room</th><td>${b.roomName}</td></tr>
       <tr><th>Date</th><td>${b.date}</td></tr>
       <tr><th>Time</th><td>${b.time}</td></tr>
       <tr><th>Type</th><td>${b.type}</td></tr>
       <tr><th>Status</th><td><span class="badge ${badgeClass}">${b.status}</span></td></tr>
     </table>
-    ${b.status==='Pending'?'<p style="color:#ffc107;">⏳ Pending — will auto-approve shortly.</p>':'<p style="color:#28a745;">✅ Priority booking confirmed instantly!</p>'}
+    ${b.status === 'Pending' ? '<p style="color:#ffc107;">⏳ Pending — will auto-approve shortly.</p>' : '<p style="color:#28a745;">✅ Priority booking confirmed instantly!</p>'}
   `;
-  const modalEl = document.getElementById('evidenceModal');
-  if (typeof bootstrap !== 'undefined') {
-    new bootstrap.Modal(modalEl).show();
-  } else {
-    modalEl.style.display='block'; modalEl.classList.add('show');
-  }
-}
-function renderMyBookings(){
-  const bookings=getBookings().sort((a,b)=>b.createdAt-a.createdAt);
-  const tbody=document.getElementById('bookingsTableBody');
-  if(bookings.length===0){tbody.innerHTML='<tr><td colspan="7" style="text-align:center;color:#777;">No bookings yet.</td></tr>';return;}
-  tbody.innerHTML=bookings.map(b=>{
-    const badgeClass=b.status==='Confirmed'?'badge-success':'badge-warning';
-    return `<tr><td>${b.id}</td><td>${b.name}</td><td>${b.roomName}</td><td>${b.date}</td><td>${b.time}</td><td>${b.type}</td><td><span class="badge ${badgeClass}">${b.status}</span></td></tr>`;
-  }).join('');
-}
-function checkAutoApprovals(){
-  const bookings=getBookings(); let changed=false;
-  bookings.forEach(b=>{if(b.status==='Pending' && Date.now()>=b.autoApproveAt){b.status='Confirmed';changed=true;}});
-  if(changed){saveBookings(bookings);renderMyBookings();renderTimeSlots();renderCalendar();}
-}
-
-document.getElementById('memberPoints').textContent=getMemberPoints();
-renderRoomTabs();
-renderTimeSlots();
-renderMyBookings();
-const savedName=getCookie('rubyUserName');
-if(savedName){document.getElementById('fullName').value=savedName;document.getElementById('rememberMe').checked=true;}
-if(sessionStorage.getItem('username')){
-  try{
-    const pendingAction=JSON.parse(sessionStorage.getItem('rubyPendingAction')||'null');
-    if(pendingAction?.type==='createBooking'&&pendingAction.returnUrl===window.location.pathname+window.location.search){
-      sessionStorage.removeItem('rubyPendingAction');
-      document.getElementById('fullName').value=pendingAction.name||sessionStorage.getItem('username')||'';
-      document.getElementById('studentId').value=pendingAction.studentId||'';
-      document.getElementById('rememberMe').checked=Boolean(pendingAction.rememberName);
-      selectRoom(pendingAction.roomId);
-      const pendingDate=new Date(`${pendingAction.date}T00:00:00`);
-      if(!Number.isNaN(pendingDate.getTime())){state.viewYear=pendingDate.getFullYear();state.viewMonth=pendingDate.getMonth();}
-      pickDate(pendingAction.date);
-      pickTime(pendingAction.time);
-      createBooking(pendingAction.bookingType);
+      const modalEl = document.getElementById('evidenceModal');
+      if (typeof bootstrap !== 'undefined') {
+        new bootstrap.Modal(modalEl).show();
+      } else {
+        modalEl.style.display = 'block'; modalEl.classList.add('show');
+      }
     }
-  }catch(error){sessionStorage.removeItem('rubyPendingAction');}
-}
-setInterval(checkAutoApprovals,3000);
-</script>
-<script src="Assets/JS/loading.js"></script>
-<script src="js/site-header.js"></script>
+    function renderMyBookings() {
+      const bookings = getBookings().sort((a, b) => b.createdAt - a.createdAt);
+      const tbody = document.getElementById('bookingsTableBody');
+      if (bookings.length === 0) { tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;color:#777;">No bookings yet.</td></tr>'; return; }
+      tbody.innerHTML = bookings.map(b => {
+        const badgeClass = b.status === 'Confirmed' ? 'badge-success' : 'badge-warning';
+        return `<tr><td>${b.id}</td><td>${b.name}</td><td>${b.roomName}</td><td>${b.date}</td><td>${b.time}</td><td>${b.type}</td><td><span class="badge ${badgeClass}">${b.status}</span></td></tr>`;
+      }).join('');
+    }
+    function checkAutoApprovals() {
+      const bookings = getBookings(); let changed = false;
+      bookings.forEach(b => { if (b.status === 'Pending' && Date.now() >= b.autoApproveAt) { b.status = 'Confirmed'; changed = true; } });
+      if (changed) { saveBookings(bookings); renderMyBookings(); renderTimeSlots(); renderCalendar(); }
+    }
+
+    document.getElementById('memberPoints').textContent = getMemberPoints();
+    renderRoomTabs();
+    renderTimeSlots();
+    renderMyBookings();
+    const savedName = getCookie('rubyUserName');
+    if (savedName) { document.getElementById('fullName').value = savedName; document.getElementById('rememberMe').checked = true; }
+    if (sessionStorage.getItem('username')) {
+      try {
+        const pendingAction = JSON.parse(sessionStorage.getItem('rubyPendingAction') || 'null');
+        if (pendingAction?.type === 'createBooking' && pendingAction.returnUrl === window.location.pathname + window.location.search) {
+          sessionStorage.removeItem('rubyPendingAction');
+          document.getElementById('fullName').value = pendingAction.name || sessionStorage.getItem('username') || '';
+          document.getElementById('studentId').value = pendingAction.studentId || '';
+          document.getElementById('rememberMe').checked = Boolean(pendingAction.rememberName);
+          selectRoom(pendingAction.roomId);
+          const pendingDate = new Date(`${pendingAction.date}T00:00:00`);
+          if (!Number.isNaN(pendingDate.getTime())) { state.viewYear = pendingDate.getFullYear(); state.viewMonth = pendingDate.getMonth(); }
+          pickDate(pendingAction.date);
+          pickTime(pendingAction.time);
+          createBooking(pendingAction.bookingType);
+        }
+      } catch (error) { sessionStorage.removeItem('rubyPendingAction'); }
+    }
+    setInterval(checkAutoApprovals, 3000);
+  </script>
+  <script src="js/loading.js"></script>
+  <script src="js/site-header.js"></script>
 </body>
+
 </html>

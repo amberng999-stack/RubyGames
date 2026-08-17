@@ -6,50 +6,6 @@ $(function () {
     document.head.appendChild(sharedHeaderScript);
   }
 
-  const pageHistoryKey = 'rubyPageHistory';
-  const backNavigationKey = 'rubyBackNavigation';
-  const currentPage = window.location.pathname + window.location.search;
-  let pageHistory;
-  try { pageHistory = JSON.parse(sessionStorage.getItem(pageHistoryKey) || '[]'); }
-  catch (error) { pageHistory = []; }
-  if (sessionStorage.getItem(backNavigationKey) === 'true') {
-    sessionStorage.removeItem(backNavigationKey);
-  } else if (pageHistory[pageHistory.length - 1] !== currentPage) {
-    pageHistory.push(currentPage);
-    sessionStorage.setItem(pageHistoryKey, JSON.stringify(pageHistory.slice(-30)));
-  }
-
-  const navigation = $('.navbar-nav').first();
-  const primaryPages = [
-    ['index.html', 'HOME'],
-    ['News_2.html', 'NEWS'],
-    ['tournaments.html', 'TOURNAMENTS'],
-    ['game.html', 'GAMES'],
-    ['booking.html', 'BOOKING'],
-    ['teams.html', 'TEAMS'],
-    ['mission.html', 'MISSIONS'],
-    ['shop.html', 'SHOP']
-  ];
-
-  if (navigation.length) {
-    const currentFile = window.location.pathname.split('/').pop() || 'index.html';
-    navigation.empty();
-    primaryPages.forEach(([href, label]) => {
-      const active = currentFile.toLowerCase() === href.toLowerCase() ? ' active' : '';
-      navigation.append(`<li class="nav-item"><a class="nav-link${active}" href="${href}">${label}</a></li>`);
-    });
-    if (!document.getElementById('navbarAuth')) {
-      navigation.append('<li class="nav-item"><a class="nav-link" href="signin.html">SIGN IN</a></li>');
-    }
-  }
-
-  const customNavigation = $('.mission-nav-links, .shop-nav-links').first();
-  if (customNavigation.length) {
-    customNavigation.empty();
-    primaryPages.forEach(([href, label]) => customNavigation.append(`<a href="${href}">${label}</a>`));
-    customNavigation.append('<a href="signin.html">SIGN IN</a>');
-  }
-
   $('.fade-section').each(function () {
     const section = this;
     const reveal = () => {
