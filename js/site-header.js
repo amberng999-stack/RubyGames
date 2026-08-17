@@ -45,10 +45,17 @@
     document.head.appendChild(fontLink);
   }
 
+  if (!document.querySelector('link[href*="family=Anton"]')) {
+    const headingFontLink = document.createElement('link');
+    headingFontLink.rel = 'stylesheet';
+    headingFontLink.href = 'https://fonts.googleapis.com/css2?family=Anton&display=swap';
+    document.head.appendChild(headingFontLink);
+  }
+
   const style = document.createElement('style');
   style.textContent = `
     html,body,button,input,select,textarea{font-family:Poppins,Arial,sans-serif!important}
-    h1,h2,h3,h4,h5,h6,.ruby-header-brand{font-family:Impact,"Arial Black",sans-serif!important}
+    h1,h2,h3,h4,h5,h6,.ruby-header-brand{font-family:Impact,Anton,"Arial Black",sans-serif!important}
     body{overflow-x:hidden;background:#000;color:#fff}
     img,video,iframe{max-width:100%}
     body.ruby-fixed-header-page{padding-top:68px!important}

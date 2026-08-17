@@ -21,7 +21,7 @@ h2,
 h3,
 h4,
 .navbar-brand {
-  font-family: Impact, "Arial Black", sans-serif;
+  font-family: Impact, "Anton", "Arial Black", sans-serif;
   letter-spacing: .045em;
 }
 
@@ -131,7 +131,7 @@ a {
   place-items: center;
   background: linear-gradient(135deg, #210407, #090909);
   color: var(--ruby-red);
-  font: 4rem Impact;
+  font: 4rem Impact, "Anton", "Arial Black", sans-serif;
 }
 
 .badge-ruby {
@@ -209,7 +209,7 @@ a {
   border-radius: 50%;
   background: linear-gradient(135deg, var(--ruby-red), #3c050b);
   border: 3px solid #d83b4b;
-  font: 3.5rem Impact, "Arial Black", sans-serif;
+  font: 3.5rem Impact, "Anton", "Arial Black", sans-serif;
 }
 
 .profile-photo-controls {

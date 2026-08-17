@@ -1195,7 +1195,7 @@ h2,
 h3,
 h4,
 .navbar-brand {
-  font-family: Impact, "Arial Black", sans-serif;
+  font-family: Impact, "Anton", "Arial Black", sans-serif;
   letter-spacing: .045em;
 }
 
@@ -1305,7 +1305,7 @@ a {
   place-items: center;
   background: linear-gradient(135deg, #210407, #090909);
   color: var(--ruby-red);
-  font: 4rem Impact;
+  font: 4rem Impact, "Anton", "Arial Black", sans-serif;
 }
 
 .badge-ruby {
