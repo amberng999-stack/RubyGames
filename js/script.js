@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function loadCampusWeather(output) {
-  const endpoint = 'https://api.open-meteo.com/v1/forecast?latitude=3.214&longitude=101.729&current=temperature_2m&timezone=Asia%2FKuala_Lumpur';
+  const endpoint = 'https://api.open-meteo.com/v1/forecast?latitude=4.336214&longitude=101.142111&current=temperature_2m&timezone=Asia%2FKuala_Lumpur';
   $.ajax({
     url: endpoint,
     method: 'GET',
