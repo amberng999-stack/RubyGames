@@ -617,12 +617,6 @@ function renderStore() {
 ========================================= */
 
 function redeemReward(productName) {
-
-    if (productName === "Priority Gaming Room Booking") {
-        window.location.href = "booking.html";
-        return;
-    }
-
     const product = rewardProducts.find(
         function (item) {
             return item.name === productName;
@@ -732,6 +726,12 @@ function redeemReward(productName) {
 
     }
 
+   const dailyCount =
+            getDailyRedeemedCount(product.name);
+
+   const weeklyCount =
+            getWeeklyRedeemedCount(product.name);
+
     if (
         product.dailyLimit !== null &&
         dailyCount >= product.dailyLimit
@@ -769,7 +769,11 @@ function redeemReward(productName) {
         return;
     }
 
-
+   if (productName === "Priority Gaming Room Booking") {
+        window.location.href = "booking.html";
+        return;
+    }
+   
     /* =================================
        CONFIRM
     ================================= */
@@ -851,6 +855,7 @@ function redeemReward(productName) {
 
     renderRewardHistory();
 
+    renderReward(); 
 
     showShopToast(
 
