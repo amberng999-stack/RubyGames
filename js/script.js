@@ -45,9 +45,9 @@ function loadCampusWeather(output) {
   })
     .done(function (data) {
       const temperature = data.current?.temperature_2m;
-      output.textContent = Number.isFinite(temperature) ? `${Math.round(temperature)}°C at Sungai Long` : 'Sungai Long campus';
+      output.textContent = Number.isFinite(temperature) ? `${Math.round(temperature)}°C at Kampar` : 'Kampar campus';
     })
     .fail(function () {
-      output.textContent = 'Sungai Long campus';
+      output.textContent = 'Kampar campus';
     });
 }
