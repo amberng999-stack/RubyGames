@@ -335,6 +335,10 @@ a {
   letter-spacing: 0;
 }
 
+.profile-list-context {
+  font-weight: 400;
+}
+
 .profile-list-meta {
   margin: 0;
   color: var(--light-gray);
