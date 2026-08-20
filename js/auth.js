@@ -48,17 +48,6 @@ function makeProfileListItem(title, details) {
   return item;
 }
 
-function makeProfileReminderItem(reminder, details) {
-  const item = makeProfileListItem(reminder.tournament || 'Tournament', details);
-  if (reminder.match) {
-    const match = document.createElement('span');
-    match.className = 'profile-list-context';
-    match.textContent = ` — ${reminder.match}`;
-    item.querySelector('.profile-list-title').appendChild(match);
-  }
-  return item;
-}
-
 function renderProfileCollection(listId, countId, entries, emptyMessage, itemRenderer) {
   const list = document.getElementById(listId);
   const count = document.getElementById(countId);
@@ -117,7 +106,8 @@ function getProfileReminders() {
 function renderProfileActivity() {
   renderProfileCollection('profileReminderList', 'profileReminderCount', getProfileReminders(), 'No tournament reminders have been set.', function (reminder) {
     const schedule = [reminder.teams, reminder.date, reminder.time].filter(Boolean).join(' · ');
-    return makeProfileReminderItem(reminder, schedule);
+    const title = [reminder.tournament || 'Tournament', reminder.match].filter(Boolean).join(' — ');
+    return makeProfileListItem(title, schedule);
   });
 
   const tournaments = readStoredArray('tournamentsInCharge');

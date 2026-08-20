@@ -335,10 +335,6 @@ a {
   letter-spacing: 0;
 }
 
-.profile-list-context {
-  font-weight: inherit;
-}
-
 .profile-list-meta {
   margin: 0;
   color: var(--light-gray);
