@@ -331,12 +331,12 @@ a {
   margin: 0 0 .3rem;
   font-family: Poppins, Arial, sans-serif;
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0;
 }
 
 .profile-list-context {
-  font-weight: 400;
+  font-weight: inherit;
 }
 
 .profile-list-meta {
