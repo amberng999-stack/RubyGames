@@ -324,7 +324,7 @@ a {
 .profile-list-item {
   padding: 1rem;
   background: #141414;
-  border-left: 3px solid var(--ruby-red);
+  border-left: 1px solid var(--ruby-red);
 }
 
 .profile-list-title {
