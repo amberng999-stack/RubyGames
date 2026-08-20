@@ -5,7 +5,6 @@ const rubyAccountStorageKeys = [
   'rewardRedeemCounts',
   'orderHistory',
   'cart',
-  'favouriteTeam',
   'acceptedMissions',
   'missionHistory',
   'dailyRefreshDate',
@@ -105,35 +104,8 @@ function chooseCookieConsent(choice) {
   if (notice) notice.remove();
 }
 
-function getFavouriteTeam() { return localStorage.getItem('favouriteTeam') || ''; }
-function setFavouriteTeam(teamName) { localStorage.setItem('favouriteTeam', teamName); renderFavouriteTeams(); }
-function removeFavouriteTeam() { localStorage.removeItem('favouriteTeam'); renderFavouriteTeams(); }
-
-function renderFavouriteTeams() {
-  const favourite = getFavouriteTeam();
-  document.querySelectorAll('.favourite-button').forEach(function (button) {
-    const selected = button.dataset.team === favourite;
-    button.classList.toggle('btn-ruby', selected);
-    button.classList.toggle('btn-outline-ruby', !selected);
-    button.textContent = selected ? '♥ Favourite' : '♡ Add to Favourite';
-  });
-  const status = document.getElementById('favouriteStatus');
-  if (status) status.textContent = favourite ? `Your favourite team: ${favourite}` : 'No favourite team selected.';
-  const removeButton = document.getElementById('removeFavourite');
-  if (removeButton) removeButton.hidden = !favourite;
-}
-
 function initialiseStorageFeatures() {
   showCookieNotice();
-  renderFavouriteTeams();
-  document.addEventListener('click', function (event) {
-    const button = event.target.closest('.favourite-button');
-    if (!button) return;
-    const team = button.dataset.team;
-    getFavouriteTeam() === team ? removeFavouriteTeam() : setFavouriteTeam(team);
-  });
-  const removeButton = document.getElementById('removeFavourite');
-  if (removeButton) removeButton.addEventListener('click', removeFavouriteTeam);
 }
 
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initialiseStorageFeatures);

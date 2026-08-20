@@ -1387,11 +1387,6 @@ a {
   border-top: 1px solid #3c0a0f;
 }
 
-.favourite-status {
-  color: #ef8590;
-  font-size: .9rem;
-}
-
 .fade-section {
   opacity: 0;
   transform: translateY(20px);

@@ -201,7 +201,6 @@ function initialiseProfilePage() {
   $('#profileWelcomeName').text(username);
   $('#profileEmail').text(email || 'Email not available');
   $('#profileInitial').text(username.charAt(0).toUpperCase());
-  $('#profileFavourite').text(getFavouriteTeam() || 'No favourite team selected');
   renderProfileActivity();
   initialiseProfilePicture();
 }
